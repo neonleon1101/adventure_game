@@ -1,0 +1,26 @@
+{
+    "PTB-T-LBD-01": {
+        "item_name": "Brass Key",
+        "description": "A heavy brass key, worn smooth along the edges. Its ornate bow curls into an old-fashioned design, and faint scratches suggest it's been used many times before.",
+        "addDescription": "You picked up the key (Open your inventory to inspect it further).",
+        "dropDescription": "You dropped the key",
+        "useDescription": "You used the key",
+        "hasItem": false
+    },
+    "PTB-N-001-02": {
+        "item_name": "Torn Diary Entry",
+        "description": "Dated: March 3, 1974\n\n\n\nI heard the sirens again today.\n\nHarold dismisses it as 'routine checks,' but he forgets I grew up around the mines. I know the sound of panic when I hear it. The men look tired... leaner every week, like they're working double shifts. Maybe they are. Harold never talks about the mine anymore. Every attempt I make leads to an argument.\n\nI don't know what he's hiding, but whatever it is... it's getting worse.\n\nHe used to be a kinder man.\n\n\n\nI pray he finds his way back.",
+        "addDescription": "You picked up the note.",
+        "dropDescription": "You cannot drop this item.",
+        "useDescription": "You cannot use this item.",
+        "hasItem": false
+    },
+    "LIV-N-003-01": {
+        "item_name": "Newspaper Clipping",
+        "description": "THIRTEEN DEAD IN MINE COLLAPSE --- COMPANY CALLS IT 'UNFORESEEABLE'              Rockford County Herald --- August 22, 1974\n\nA partial collapse in the Scarlet Mining Co. shaft system left thirteen confirmed dead, including multiple 'auxiliary assistants,' a term the company declined to clarify.\n\nRepresentatives denied allegations of unsafe conditions and insisted the collapse was caused by an 'unpredictable geological shift.'\n\nGrieving families gathered outside the mine entrance demanding answers. Some claim the company is withholding information about the cause.\n\nScarlet Mining Co. has promised a full investigation.\n\nNo timeline has been provided.",
+        "addDescription": "You picked up the newspaper.",
+        "dropDescription": "You cannot drop this item.",
+        "useDescription": "You cannot use this item.",
+        "hasItem": false
+    }
+}
