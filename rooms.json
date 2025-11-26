@@ -424,6 +424,12 @@
         "explored": false,
         "choices": {
             "1": {
+                "Look longingly out into the distance": "you look out towards the moon and take a deep breath before remembering you got shit to do",
+                "once": true,
+                "nav" : false,
+                "item": false
+            },
+            "2": {
                 "Go back inside": "master_bedroom",
                 "once": false,
                 "nav" : true,
