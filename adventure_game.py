@@ -7,7 +7,7 @@ with open("/Users/neonl/python_work/.vscode/adventure_game/rooms.json", "r") as 
 with open("/Users/neonl/python_work/.vscode/adventure_game/items.json", "r") as f:
     itemContents = json.load(f)
 
-#this is stupid
+#this is stupid on new branch
 
 # Global Game States
 run = True
