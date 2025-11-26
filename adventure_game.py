@@ -1,10 +1,10 @@
 import time, sys, random, threading, msvcrt, textwrap, json, os
 
 # Room information from rooms.json
-with open("/Users/neonl/python_work/.vscode/adventure_game/rooms.json", "r") as f:
+with open("./rooms.json", "r") as f:
     roomContents = json.load(f)
 # Item information from items.json
-with open("/Users/neonl/python_work/.vscode/adventure_game/items.json", "r") as f:
+with open("./items.json", "r") as f:
     itemContents = json.load(f)
 
 # Global Game States
@@ -140,7 +140,7 @@ def removeChoice(room_key:str, user_input: str):
 def show_mainMenu():
     os.system('color a')
     os.system('cls')
-    with open('/Users/neonl/python_work/.vscode/adventure_game/ascii_Scarlet_Manor.txt', 'r', errors='ignore') as file:
+    with open('./ascii_Scarlet_Manor.txt', 'r', errors='ignore') as file:
             content = file.read()
     print(textDivide + '\n')
     print(content)
@@ -213,7 +213,7 @@ def show_gameIntro():
     current_room = "exterior"
     
     os.system('cls')
-    with open('/Users/neonl/python_work/.vscode/adventure_game/introduction.txt', 'r', errors='ignore') as file:
+    with open('./introduction.txt', 'r', errors='ignore') as file:
         content = file.read()
     slowReader(content, True)
     time.sleep(2)
