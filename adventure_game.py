@@ -140,7 +140,7 @@ def removeChoice(room_key:str, user_input: str):
 def show_mainMenu():
     os.system('color a')
     os.system('cls')
-    with open('./ascii_Scarlet_Manor.txt', 'r', errors='ignore') as file:
+    with open('./text/ascii_Scarlet_Manor.txt', 'r', errors='ignore') as file:
             content = file.read()
     print(textDivide + '\n')
     print(content)
@@ -213,7 +213,7 @@ def show_gameIntro():
     current_room = "exterior"
     
     os.system('cls')
-    with open('./introduction.txt', 'r', errors='ignore') as file:
+    with open('./text/introduction.txt', 'r', errors='ignore') as file:
         content = file.read()
     slowReader(content, True)
     time.sleep(2)
