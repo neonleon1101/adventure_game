@@ -24,6 +24,7 @@ play_resumed = False
 current_room = "exterior"
 inv_items = []
 inv_notes = [None, None, None, None, None, None]
+dropped_items = {}
 rooms_explored = []
 
 
@@ -99,6 +100,15 @@ def fastReader(text: str, toggleDivide: bool):
 #----------------------
 #  GAME FUNCTIONS
 #----------------------
+
+# Saves relevant game data to a .txt file to be loaded later
+def saveGame():
+    ...
+
+# Loads relevant game data from a .txt file and continues the game from there
+def loadGame():
+    ...
+
 # When nav = true, changes current_room based on user_input
 def enterRoom(room_key: str, user_input: str):
     global roomContents, current_room
@@ -185,8 +195,8 @@ def show_itemsMenu():
             item_name = get_itemName(item)
             item_number = item_number + 1
             print(f' {item_number} - {item_name}')
-            
-    print('\n 0 - Return')
+        print('\n d - Drop Item')        
+    print(' 0 - Return')
     print('\n' + textDivide)
 
 # Shows the notes menu within the inventory menu
@@ -342,7 +352,7 @@ def check_item(room_key: str, user_input: str) -> bool:
 def check_hasItem(item_code: str) -> bool:
     global itemContents
 
-    hasItem = roomContents[item_code]['hasItem']
+    hasItem = itemContents[item_code]['hasItem']
     if hasItem == False:
         return False
     elif hasItem == True:
@@ -376,8 +386,22 @@ def addItem(room_key: str, user_input: str):
     slowReader(msg, False)
 
 # Removes an item from the player's inventory and places it in the current_room
-def dropItem():
-    ...
+def dropItem(room_key: str, user_input: str):
+    global roomContents, itemContents, inv_items
+
+    item = inv_items[int(user_input) - 1]
+    room = roomContents[room_key]
+
+    if item in inv_items:
+        inv_items.remove(item)
+    else:
+        return
+    
+    roomContents[room_key]['dropped_items'].append(item)
+    dropped_items.setdefault(item, room)
+    
+    msg = show_dropItemDesc(item)
+    slowReader(msg, False)
 
 # Searchs through roomContents and gets the item code of the item of the corresponding input
 def get_itemCode(room_key: str, user_input: str) -> str:
@@ -555,11 +579,21 @@ while run:
         os.system('cls')
         show_itemsMenu()
 
-        user_input = input('> ').strip()
+        user_input = input('> ').lower().strip()
 
         if user_input == '0':
             itemsMenu = False
             inventoryMenu = True
+        elif user_input == 'd':
+            if inv_items:
+                slowReader("Which item would you like to drop?", False)
+                drop = input('> ').strip()
+                if int(drop) in range(1, len(inv_items)+1):
+                    dropItem(current_room, drop)
+                else:
+                    pass
+            else:
+                pass
         elif int(user_input) in range(1, len(inv_items)+1):
             show_itemDesc(user_input)
         else:

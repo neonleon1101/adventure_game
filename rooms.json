@@ -4,6 +4,7 @@
         "description": "You take in the looming shape of the manor, its silhouette swallowing the last of the fading light, but the longer you stand there, the more the cold rain begins to seep through your clothes. A shiver coils down your spine as the wind cuts across the drive, urging you forward.\n\nWhatever waits inside can come later... for now, the front porch is the only shelter in sight.",
         "returnDesc": "you're back in the exterior.",
         "explored": false,
+        "dropped_items": [],
         "choices": {
             "1": {
                 "Find Shelter on the Front Porch": "porch",
@@ -18,6 +19,7 @@
         "description": "The porch groans beneath your weight as you step onto it, the boards swollen and soft from years of damp, each footfall sinking slightly as though the house is testing your presence. The railing is a lacework of peeling paint and rusted nails; its ornate Victorian patterns warped into twisted shapes by time. Up close, the double front doors dominate your vision... tall, heavy slabs of dark wood stained a deep crimson that seems darker in the shadows, almost as if the color had seeped into the grain rather than been painted on. The brass handles are cold beneath a thin film of grime, each one marked by deep gouges, as though someone once clawed at the door in desperation or fury.\n\nOff to your left, partly veiled by a heavy curtain of ivy; a single tall window watches the porch. The glass is clouded with age, its reflection warped, yet you can faintly make out shapes and shadows shifting in the darkness beyond, their edges too soft and distant to understand from here. The wind stirs just enough to rattle a loose porch board behind you, though the rest of the air remains unnervingly still. Ahead, the red doors stand silent and waiting.",
         "returnDesc": "you're back in the porch.",
         "explored": false,
+        "dropped_items": [],
         "choices": {
             "1": {
                 "Enter Scarlet Manor": "foyer",
@@ -44,6 +46,7 @@
         "description": "You grip the cold brass handle, feeling the deep scratches beneath your fingertips as you pull. The heavy door resists at first, then yields with a long, low groan, releasing a draft of stale, ancient air that spills out around you. As the darkness inside parts just enough to reveal the foyer beyond, you step over the threshold and let the house swallow the sound of the rain behind you.\n\nThe foyer swallows you in cold air the moment you step inside, the scent of dust and old varnish thick enough to taste. Your eyes adjust slowly, shapes taking form in the dim natural light that sneaks past the threshold behind you. The ceiling rises far higher than you expected... an immense, vaulted chamber crowned by a magnificent chandelier suspended low over the open floor. Its iron frame is a sprawling tangle of ornate scrollwork and curved arms, each one fitted with tall, unlit candles. Even in darkness, it radiates a kind of commanding presence, like a relic meant to be adored from below.\n\nYour gaze drifts outward. Twin staircases spiral upward from the left and right sides of the room, their carved banisters mirroring each other perfectly as they curve toward a mezzanine that spans the foyer like a suspended bridge. Straight ahead, beneath that mezzanine, a long hallway stretches into the depths of the house... narrow, dark, lined with doors that seem to lean subtly inward, as though listening. To your immediate right, an open doorway reveals the edge of a parlor draped in heavy curtains, faint shapes of furniture lurking inside. To your left, a large door stands firmly shut... tall and imposing.\n\nYou barely manage a breath before the front door behind you slams shut with violent force, the sound cracking through the chamber like a gunshot. A sharp metallic click follows... locked. In that same heartbeat, the chandelier above erupts to life as every candle ignites at once in a sudden burst of flame. Warm light floods the foyer as sconces along the walls flare open, revealing the house's full grandeur... and the hollow stillness beneath it. Whatever is here, it's not letting you leave anytime soon.",
         "returnDesc": "The foyer greets you with its warm candlelight and towering symmetry, the chandelier still burning steadily overhead. The grand staircases and shadowed hallway seem no less imposing now that you've stood here before.",
         "explored": false,
+        "dropped_items": [],
         "choices": {
             "1": {
                 "Investigate the room to the right": "parlor",
@@ -76,6 +79,7 @@
         "description": "Stepping through the open doorway, you find yourself in a parlor frozen somewhere between elegance and decay. The air is stale, carrying the faint scent of old perfume and dust. A round table sits in the center of the room, draped in a faded lace runner and surrounded by mismatched chairs, their cushions slightly sunken with age. Heavy curtains frame the tall windows, while the warm glow of candles and wall sconces washes over the scattered furniture... an ornate sofa, a pair of armchairs, and a cracked side cabinet leaning slightly to one side. On the table, you notice something resting at its center, made clearer under the steady candlelight. The open doorway behind you offers a clear view back into the foyer, reminding you how close you are to where you first arrived.",
         "returnDesc": "The parlor looks much the same as when you left it... the soft candlelight, the sagging furniture, and the table in the center still drawing your attention. The quiet air carries the same faint trace of old perfume and dust.",
         "explored": false,
+        "dropped_items": [],
         "choices": {
             "1": {
                 "Approach the table": "parlor_table",
@@ -96,6 +100,7 @@
         "description": "The round table's faded lace runner curls slightly at the edges, and at its center lies a single torn page... ripped cleanly from a larger book or diary. Resting squarely on top of the paper is a large brass key, its weighty frame catching the candlelight with a muted, golden sheen.",
         "returnDesc": "The table sits quietly at the center of the parlor, its faded lace runner undisturbed beneath the steady glow of the candles. It looks much the same as when you last saw it.",
         "explored": false,
+        "dropped_items": [],
         "choices": {
             "1": {
                 "Pick up the key": "PTB-T-LBD-01",
@@ -122,6 +127,7 @@
         "description": "you are in the hallway with a door on the left and on the right",
         "returnDesc": "you are back in the hallway",
         "explored": false,
+        "dropped_items": [],
         "choices": {
             "1": {
                 "Go through the door on the left": "living_room",
@@ -148,6 +154,7 @@
         "description": "you are in the living room",
         "returnDesc": "you are back in the living room",
         "explored": false,
+        "dropped_items": [],
         "choices": {
             "1": {
                 "Go back into the hallway": "hallway",
@@ -162,6 +169,7 @@
         "description": "you are in the kitchen",
         "returnDesc": "you are back in the kitchen",
         "explored": false,
+        "dropped_items": [],
         "choices": {
             "1": {
                 "Investigate the Pantry": "pantry",
@@ -188,6 +196,7 @@
         "description": "you are in the pantry",
         "returnDesc": "you are back in the pantry",
         "explored": false,
+        "dropped_items": [],
         "choices": {
             "1": {
                 "Go back into the kitchen": "kitchen",
@@ -202,6 +211,7 @@
         "description": "you are in the greenhouse",
         "returnDesc": "you are back in the greenhouse",
         "explored": false,
+        "dropped_items": [],
         "choices": {
             "1": {
                 "Search the utility closet": "utility_closet",
@@ -222,6 +232,7 @@
         "description": "you are in the utility closet",
         "returnDesc": "you are back in the utility closet",
         "explored": false,
+        "dropped_items": [],
         "choices": {
             "1": {
                 "Return to the greenhouse": "greenhouse",
@@ -236,6 +247,7 @@
         "description": "you are standing on the mezzanine looking down at the foyer, there are 4 doors that line the upstairs hallway",
         "returnDesc": "you are back on the mezzanine",
         "explored": false,
+        "dropped_items": [],
         "choices": {
             "1": {
                 "Go through door number 1": "master_bedroom",
@@ -274,6 +286,7 @@
         "description": "you walk into a bathroom",
         "returnDesc": "you are back in the bathroom",
         "explored": false,
+        "dropped_items": [],
         "choices": {
             "1": {
                 "Go back to the mezzanine": "mezzanine",
@@ -288,6 +301,7 @@
         "description": "you walk into a bedroom (1)",
         "returnDesc": "you are back in the bedroom",
         "explored": false,
+        "dropped_items": [],
         "choices": {
             "1": {
                 "Investigate the closet": "closet_one",
@@ -322,6 +336,7 @@
         "description": "you walk into a bedroom (2)",
         "returnDesc": "you are back in the bedroom",
         "explored": false,
+        "dropped_items": [],
         "choices": {
             "1": {
                 "Investigate the closet": "closet_two",
@@ -342,6 +357,7 @@
         "description": "you walk into a closet (2)",
         "returnDesc": "you are back in the closet",
         "explored": false,
+        "dropped_items": [],
         "choices": {
             "1": {
                 "Leave the closet": "bedroom_two",
@@ -356,6 +372,7 @@
         "description": "you are in the master bedroom",
         "returnDesc": "you are back in the master bedroom",
         "explored": false,
+        "dropped_items": [],
         "choices": {
             "1": {
                 "Investigate the balcony": "balcony",
@@ -394,6 +411,7 @@
         "description": "you walk into the master bedroom's private bathroom",
         "returnDesc": "you are back in the master bathroom",
         "explored": false,
+        "dropped_items": [],
         "choices": {
             "1": {
                 "Leave the bathroom": "master_bedroom",
@@ -408,6 +426,7 @@
         "description": "you walk into the master bedroom's walk-in closet",
         "returnDesc": "you are back in the master closet",
         "explored": false,
+        "dropped_items": [],
         "choices": {
             "1": {
                 "Leave the closet": "master_bedroom",
@@ -422,6 +441,7 @@
         "description": "you walk out onto the balcony",
         "returnDesc": "you return to the balcony",
         "explored": false,
+        "dropped_items": [],
         "choices": {
             "1": {
                 "Look longingly out into the distance": "you look out towards the moon and take a deep breath before remembering you got shit to do",
