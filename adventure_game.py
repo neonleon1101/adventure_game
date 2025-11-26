@@ -339,8 +339,16 @@ def check_item(room_key: str, user_input: str) -> bool:
         print('ERROR: check_item')
 
 # Checks if the player has a specific needed item (meets 'hasItem' requirement)
-def check_hasItem() -> bool:
-    ...
+def check_hasItem(item_code: str) -> bool:
+    global itemContents
+
+    hasItem = roomContents[item_code]['hasItem']
+    if hasItem == False:
+        return False
+    elif hasItem == True:
+        return True
+    else:
+        print('ERROR: check_hasItem')
 #^^^^^^^^^^^^^^^^^^^^^^
 
 
