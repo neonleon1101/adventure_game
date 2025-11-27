@@ -21,10 +21,10 @@ skip_Description = False
 play_resumed = False
 
 # Player Stats <= Stuff that needs to be 'saved' and recalled when 'loaded'
-current_room = "exterior"
+current_room = "parlor_table"
 inv_items = []
 inv_notes = [None, None, None, None, None, None]
-dropped_items = {}
+removed_items = []
 rooms_explored = []
 
 
@@ -195,7 +195,7 @@ def show_itemsMenu():
             item_name = get_itemName(item)
             item_number = item_number + 1
             print(f' {item_number} - {item_name}')
-        print('\n d - Drop Item')        
+        print('\n r - Remove Item')        
     print(' 0 - Return')
     print('\n' + textDivide)
 
@@ -359,6 +359,18 @@ def check_hasItem(item_code: str) -> bool:
         return True
     else:
         print('ERROR: check_hasItem')
+
+# Checks if the item is essential or not (needed to win the game)
+def check_essential(item_code:str) -> bool:
+    global itemContents
+
+    essential = itemContents[item_code]['essential']
+    if essential == False:
+        return False
+    elif essential == True:
+        return True
+    else:
+        print('ERROR: check_hasItem')
 #^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -386,22 +398,33 @@ def addItem(room_key: str, user_input: str):
     slowReader(msg, False)
 
 # Removes an item from the player's inventory and places it in the current_room
-def dropItem(room_key: str, user_input: str):
+def removeItem(user_input: str):
     global roomContents, itemContents, inv_items
 
     item = inv_items[int(user_input) - 1]
-    room = roomContents[room_key]
-
-    if item in inv_items:
-        inv_items.remove(item)
-    else:
+    if check_essential(item) == False:
+        msg = "Once you remove and item it will be lost forever. Are you sure you want to remove this item?"
+        slowReader(msg, False)
+        removePrompt = input('> ').lower().strip()
+        if removePrompt == 'yes':
+            item = inv_items[int(user_input) - 1]
+            if item in inv_items:
+                inv_items.remove(item)
+            else:
+                return
+            msg = show_removeItemDesc(item)
+            slowReader(msg, False)
+            time.sleep(1)
+        else:
+            print("Remove canceled")
+            time.sleep(1)
+    elif check_essential(item) == True:
+        msg = show_removeItemDesc(item)
+        slowReader(msg, False)
+        time.sleep(1)
         return
-    
-    roomContents[room_key]['dropped_items'].append(item)
-    dropped_items.setdefault(item, room)
-    
-    msg = show_dropItemDesc(item)
-    slowReader(msg, False)
+    else:
+        print("ERROR: removeItem")
 
 # Searchs through roomContents and gets the item code of the item of the corresponding input
 def get_itemCode(room_key: str, user_input: str) -> str:
@@ -478,12 +501,12 @@ def show_addItemDesc(item_code: str) -> str:
     else:
         return None
 
-def show_dropItemDesc(item_code: str) -> str:
+def show_removeItemDesc(item_code: str) -> str:
     global itemContents
 
     item = itemContents[item_code]
     if item:
-        return item.get('dropDescription')
+        return item.get('removeDescription')
     else:
         return None
 
@@ -584,20 +607,26 @@ while run:
         if user_input == '0':
             itemsMenu = False
             inventoryMenu = True
-        elif user_input == 'd':
+        elif user_input == 'r':
             if inv_items:
-                slowReader("Which item would you like to drop?", False)
-                drop = input('> ').strip()
-                if int(drop) in range(1, len(inv_items)+1):
-                    dropItem(current_room, drop)
-                else:
-                    pass
+                slowReader("Which item would you like to remove?", False)
+                remove = input('> ').strip()
+                if remove in '1234567890':
+                    if int(remove) in range(1, len(inv_items)+1):
+                        removeItem(remove)
+                    else:
+                        pass
+            else:
+                print("I don't understand that command.")
+                time.sleep(1)
+        elif user_input in '1234567890':
+            if int(user_input) in range(1, len(inv_items)+1):
+                show_itemDesc(user_input)
             else:
                 pass
-        elif int(user_input) in range(1, len(inv_items)+1):
-            show_itemDesc(user_input)
         else:
             print("I don't understand that command.")
+            time.sleep(1)
 
     while notesMenu:
         os.system('cls')
@@ -608,7 +637,7 @@ while run:
         if user_input == '0':
             notesMenu = False
             inventoryMenu = True
-        elif user_input in ['1','2','3','4','5','6']:
+        elif user_input in '123456':
             show_noteDesc(user_input)
         else:
             print("I don't understand that command.")
@@ -638,20 +667,20 @@ while run:
             if user_input not in roomContents[current_room]['choices']:
                 print("That is not a valid choice.")
             else:
-                choiceOnce = check_once(current_room, user_input)
-                if choiceOnce == True:
-                    choiceItem = check_item(current_room, user_input)
-                    if choiceItem == False:
+                # choiceOnce = check_once(current_room, user_input)
+                if check_once(current_room, user_input) == True:
+                    # choiceItem = check_item(current_room, user_input)
+                    if check_item(current_room, user_input) == False:
                         show_OnceDesc(current_room, user_input)
                         play_resumed = True
-                    elif choiceItem == True:
+                    elif check_item(current_room, user_input) == True:
                         addItem(current_room, user_input)
                         time.sleep(1)
                         play_resumed = True
                         removeChoice(current_room, user_input)
                 else:
-                    choiceNav = check_nav(current_room, user_input)
-                    if choiceNav == True:
+                    # choiceNav = check_nav(current_room, user_input)
+                    if check_nav(current_room, user_input) == True:
                         enterRoom(current_room, user_input)
         else:
             print("I don't understand that command.")
