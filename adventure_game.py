@@ -687,24 +687,21 @@ while run:
             play = False
             inventoryMenu = True
         elif user_input in choices:
-            if user_input not in roomContents[current_room]['choices']:
-                print("That is not a valid choice.")
-            else:
-                if check_once(current_room, user_input) == True:
-                    if check_item(current_room, user_input) == False:
-                        show_OnceDesc(current_room, user_input)
+            if check_once(current_room, user_input) == True:
+                if check_item(current_room, user_input) == False:
+                    show_OnceDesc(current_room, user_input)
+                    play_resumed = True
+                elif check_item(current_room, user_input) == True:
+                    if check_invFull(current_room, user_input) == False:
+                        addItem(current_room, user_input)
+                        time.sleep(1)
                         play_resumed = True
-                    elif check_item(current_room, user_input) == True:
-                        if check_invFull(current_room, user_input) == False:
-                            addItem(current_room, user_input)
-                            time.sleep(1)
-                            play_resumed = True
-                            removeChoice(current_room, user_input)
-                        elif check_invFull(current_room, user_input) == True:
-                            msg = "You're inventory is full."
-                            slowReader(msg, False)
-                            time.sleep(1)
-                            play_resumed = True
+                        removeChoice(current_room, user_input)
+                    elif check_invFull(current_room, user_input) == True:
+                        msg = "You're inventory is full."
+                        slowReader(msg, False)
+                        time.sleep(1)
+                        play_resumed = True
                 else:
                     if check_nav(current_room, user_input) == True:
                         enterRoom(current_room, user_input)
