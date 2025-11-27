@@ -10,7 +10,7 @@
     },
     "LIV-T-LBD-02": {
         "item_name": "Brass Key 2",
-        "essential": false,
+        "essential": true,
         "description": "A heavy brass key, worn smooth along the edges. Its ornate bow curls into an old-fashioned design, and faint scratches suggest it's been used many times before.",
         "addDescription": "You picked up the key.",
         "removeDescription": "You removed the key",

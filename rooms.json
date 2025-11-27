@@ -176,7 +176,7 @@
         "explored": false,
         "choices": {
             "1": {
-                "Investigate the Pantry": "pantry",
+                "Investigate the pantry": "pantry",
                 "once": false,
                 "nav" : true,
                 "item": false
