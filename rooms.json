@@ -154,6 +154,18 @@
                 "once": false,
                 "nav" : true,
                 "item": false
+            },
+            "2": {
+                "Pick up the key": "LIV-T-LBD-02",
+                "once": true,
+                "nav" : false,
+                "item": true
+            },
+            "3": {
+                "Pick up the note": "LIV-N-003-01",
+                "once": true,
+                "nav" : false,
+                "item": true
             }
         }
     },
