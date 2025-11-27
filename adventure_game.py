@@ -27,7 +27,7 @@ inv_notes = [None, None, None, None, None, None]
 removed_items = []
 rooms_explored = []
 
-# blah blah blah
+
 
 #----------------------
 # TYPEWRITER
@@ -588,7 +588,9 @@ while run:
             play_resumed = True
             os.system('cls')
         elif user_input == '2':
+            saveGame()
             print("Game saved!")
+            time.sleep(1)
         elif user_input == '3':
             pauseMenu = False
             mainMenu = True
