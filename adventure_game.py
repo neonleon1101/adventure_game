@@ -26,8 +26,9 @@ inv_items = []
 inv_notes = [None, None, None, None, None, None]
 removed_items = []
 rooms_explored = []
+removed_choices = {}
 
-# example change on a new branch
+
 
 #----------------------
 # TYPEWRITER
@@ -103,7 +104,7 @@ def fastReader(text: str, toggleDivide: bool):
 
 # Saves relevant game data to a .txt file to be loaded later
 def saveGame():
-    ...
+    global current_room, inv_items, inv_notes, removed_items, rooms_explored, removed_choices
 
 # Loads relevant game data from a .txt file and continues the game from there
 def loadGame():
@@ -133,12 +134,18 @@ def enterRoom(room_key: str, user_input: str):
         print("ERROR: enterRoom")
         return
 
-# Removes choice from list of choices for a room
+# Removes choice from list of choices for a room and adds it to the removed_choices dict
 def removeChoice(room_key:str, user_input: str):
-    global roomContents
+    global roomContents, removed_choices
 
     choices = roomContents[room_key]['choices']
     del choices[user_input]
+
+    if room_key not in removed_choices:
+        removed_choices[room_key] = []
+    else:
+        pass
+    removed_choices[room_key].append(user_input)
 #^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -271,7 +278,6 @@ def show_OnceDesc(room_key: str, user_input: str):
     time.sleep(2)
     print("press 'enter' to continue")
     input('')
-    removeChoice(room_key, user_input)
 
 # Show current options
 def show_Choices(room_key: str, toggleType: bool):
@@ -691,6 +697,7 @@ while run:
                 if check_item(current_room, user_input) == False:
                     show_OnceDesc(current_room, user_input)
                     play_resumed = True
+                    removeChoice(current_room, user_input)
                 elif check_item(current_room, user_input) == True:
                     if check_invFull(current_room, user_input) == False:
                         addItem(current_room, user_input)
@@ -702,9 +709,9 @@ while run:
                         slowReader(msg, False)
                         time.sleep(1)
                         play_resumed = True
-                else:
-                    if check_nav(current_room, user_input) == True:
-                        enterRoom(current_room, user_input)
+            else:
+                if check_nav(current_room, user_input) == True:
+                    enterRoom(current_room, user_input)
         else:
             print("I don't understand that command.")
             time.sleep(1)
