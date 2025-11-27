@@ -101,14 +101,88 @@ def fastReader(text: str, toggleDivide: bool):
 #----------------------
 #  GAME FUNCTIONS
 #----------------------
-
 # Saves relevant game data to a .txt file to be loaded later
 def saveGame():
-    global current_room, inv_items, inv_notes, removed_items, rooms_explored, removed_choices
+    global current_room, inv_items, inv_notes, rooms_explored, removed_choices
+
+    save_data = {
+        "current_room": current_room,
+        "inv_items": inv_items,
+        "inv_notes": inv_notes,
+        "rooms_explored": rooms_explored,
+        "removed_choices": removed_choices
+    }
+
+    with open("./save_file.json", "w") as f:
+        json.dump(save_data, f, indent=4)
+    return
 
 # Loads relevant game data from a .txt file and continues the game from there
 def loadGame():
-    ...
+    with open("./save_file.json", "r") as f:
+        save_data = json.load(f)
+
+    if save_data:
+        load_current_room(save_data["current_room"])
+        load_inv_items(save_data["inv_items"])
+        load_inv_items(save_data["inv_notes"])
+        load_rooms_explored(save_data["rooms_explored"])
+        load_removed_choices(save_data["removed_choices"])
+    if not save_data:
+        msg = "No save data found"
+        slowReader(msg, False)
+        time.sleep(3)
+
+# LOAD FUNCTIONS: Functions that run whenever the player loads a save to make sure all values are correct
+def load_current_room(save_data_room: str):
+    global current_room
+    current_room = save_data_room
+    return
+
+def load_inv_items(save_data_items: list):
+    global inv_items
+
+    if not save_data_items:
+        return
+    for item_code in save_data_items:
+        inv_items.append(item_code)
+        itemContents[item_code]['hasItem'] = True
+    return
+
+def load_inv_notes(save_data_notes: list):
+    global inv_notes
+
+    if not save_data_notes:
+        return
+    for item_code in save_data_notes:
+        code_values = item_code.split('-', 3)
+        slot_number = int(code_values[2])
+        inv_notes[slot_number - 1] = item_code
+        itemContents[item_code]['hasItem'] = True
+    return
+
+def load_rooms_explored(save_data_explored: list):
+    global rooms_explored, roomContents
+    rooms_explored = save_data_explored
+
+    if rooms_explored:
+        for room in rooms_explored:
+           roomContents[room]['explored'] = True
+        return
+    else:
+        return
+
+def load_removed_choices(save_data_removed: dict):
+    global removed_choices, roomContents
+    removed_choices = save_data_removed
+
+    if save_data_removed:
+        for room_key, choice_list in save_data_removed.items():
+            for choice_key in choice_list:
+                removeChoice(room_key, choice_key)
+        return
+    else:
+        return
 
 # When nav = true, changes current_room based on user_input
 def enterRoom(room_key: str, user_input: str):
@@ -480,6 +554,34 @@ def get_itemName(item_code: str) -> str:
     else:
         return None
 
+# Searches through roomContents and gets the room that an item comes from based off its item_code
+def get_itemRoom(item_code: str) -> str:
+    global roomContents
+
+    code_values = item_code.split('-', 3)
+
+    for room in roomContents:
+        room_code = roomContents[room]['room_code']
+        if code_values[0] == room_code:
+            return room
+        else:
+            pass
+
+# Searches through roomContents and gets the choice number that an item corresponds to bassed off its item_code
+def get_itemChoice(item_code: str) -> str:
+    global roomContents
+
+    room = get_itemRoom(item_code)
+    choices = roomContents[room]['choices']
+
+    for choice_number, choice_data in choices.items():
+        for key in choice_data.keys():
+            if key in ("once", "nav", "item"):
+                continue
+            if choice_data[key] == item_code:
+                return choice_number
+    return None     
+            
 # PRINVENTORY FUNCTIONS (print + inventory, credit: Aiden Williams)
 def show_itemDesc(user_input: str) -> str:
     global inv_items
@@ -571,6 +673,9 @@ while run:
             time.sleep(3)
             print("Game loaded!")
             time.sleep(1)
+            loadGame()
+            print(current_room, inv_notes, inv_items, rooms_explored, removed_choices)
+            input("press 'enter' to continue")
             mainMenu = False
             play = True
         elif dest == '3':
@@ -596,7 +701,7 @@ while run:
         elif user_input == '2':
             saveGame()
             print("Game saved!")
-            time.sleep(1)
+            time.sleep(2)
         elif user_input == '3':
             pauseMenu = False
             mainMenu = True
@@ -679,7 +784,6 @@ while run:
             show_roomDesc(current_room, play_resumed)
         elif roomExplored == True:
             show_ReturnDesc(current_room, play_resumed)
-
         show_Choices(current_room, play_resumed)
         play_resumed = False
 
