@@ -21,7 +21,7 @@ skip_Description = False
 play_resumed = False
 
 # Player Stats <= Stuff that needs to be 'saved' and recalled when 'loaded'
-current_room = "pantry"
+current_room = "exterior"
 inv_items = []
 inv_notes = [None, None, None, None, None, None]
 removed_items = []
