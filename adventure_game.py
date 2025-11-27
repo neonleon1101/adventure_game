@@ -21,7 +21,7 @@ skip_Description = False
 play_resumed = False
 
 # Player Stats <= Stuff that needs to be 'saved' and recalled when 'loaded'
-current_room = "parlor_table"
+current_room = "pantry"
 inv_items = []
 inv_notes = [None, None, None, None, None, None]
 removed_items = []
@@ -371,6 +371,26 @@ def check_essential(item_code:str) -> bool:
         return True
     else:
         print('ERROR: check_hasItem')
+
+# Checks if the players inventory is full or not
+def check_invFull(room_key: str, user_input: str) -> bool:
+    global roomContents, inv_items
+
+    item_code = get_itemCode(room_key, user_input)
+    code_values = item_code.split('-', 3)
+
+    if code_values[1] == 'T':
+        if len(inv_items) >= 10:
+            return True
+        elif len(inv_items) < 10:
+            return False
+        else:
+            print("ERROR: check_invFull")
+            time.sleep(1)
+    elif code_values[1] == 'N':
+        return False
+    else:
+        pass
 #^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -410,6 +430,7 @@ def removeItem(user_input: str):
             item = inv_items[int(user_input) - 1]
             if item in inv_items:
                 inv_items.remove(item)
+                removed_items.append(item)
             else:
                 return
             msg = show_removeItemDesc(item)
@@ -611,7 +632,7 @@ while run:
             if inv_items:
                 slowReader("Which item would you like to remove?", False)
                 remove = input('> ').strip()
-                if remove in '1234567890':
+                if remove in '1023456789':
                     if int(remove) in range(1, len(inv_items)+1):
                         removeItem(remove)
                     else:
@@ -619,7 +640,7 @@ while run:
             else:
                 print("I don't understand that command.")
                 time.sleep(1)
-        elif user_input in '1234567890':
+        elif user_input in '1023456789':
             if int(user_input) in range(1, len(inv_items)+1):
                 show_itemDesc(user_input)
             else:
@@ -667,19 +688,22 @@ while run:
             if user_input not in roomContents[current_room]['choices']:
                 print("That is not a valid choice.")
             else:
-                # choiceOnce = check_once(current_room, user_input)
                 if check_once(current_room, user_input) == True:
-                    # choiceItem = check_item(current_room, user_input)
                     if check_item(current_room, user_input) == False:
                         show_OnceDesc(current_room, user_input)
                         play_resumed = True
                     elif check_item(current_room, user_input) == True:
-                        addItem(current_room, user_input)
-                        time.sleep(1)
-                        play_resumed = True
-                        removeChoice(current_room, user_input)
+                        if check_invFull(current_room, user_input) == False:
+                            addItem(current_room, user_input)
+                            time.sleep(1)
+                            play_resumed = True
+                            removeChoice(current_room, user_input)
+                        elif check_invFull(current_room, user_input) == True:
+                            msg = "You're inventory is full."
+                            slowReader(msg, False)
+                            time.sleep(1)
+                            play_resumed = True
                 else:
-                    # choiceNav = check_nav(current_room, user_input)
                     if check_nav(current_room, user_input) == True:
                         enterRoom(current_room, user_input)
         else:
