@@ -73,28 +73,8 @@
     },
     "parlor": {
         "room_code": "PAR",
-        "description": "Stepping through the open doorway, you find yourself in a parlor frozen somewhere between elegance and decay. The air is stale, carrying the faint scent of old perfume and dust. A round table sits in the center of the room, draped in a faded lace runner and surrounded by mismatched chairs, their cushions slightly sunken with age. Heavy curtains frame the tall windows, while the warm glow of candles and wall sconces washes over the scattered furniture... an ornate sofa, a pair of armchairs, and a cracked side cabinet leaning slightly to one side. On the table, you notice something resting at its center, made clearer under the steady candlelight. The open doorway behind you offers a clear view back into the foyer, reminding you how close you are to where you first arrived.",
-        "returnDesc": "The parlor looks much the same as when you left it... the soft candlelight, the sagging furniture, and the table in the center still drawing your attention. The quiet air carries the same faint trace of old perfume and dust.",
-        "explored": false,
-        "choices": {
-            "1": {
-                "Approach the table": "parlor_table",
-                "once": false,
-                "nav" : true,
-                "item": false
-            },
-            "2": {
-                "Go back to the foyer": "foyer",
-                "once": false,
-                "nav" : true,
-                "item": false
-            }
-        }
-    },
-    "parlor_table": {
-        "room_code": "PTB",
-        "description": "The round table's faded lace runner curls slightly at the edges, and at its center lies a single torn page... ripped cleanly from a larger book or diary. Resting squarely on top of the paper is a large brass key, its weighty frame catching the candlelight with a muted, golden sheen.",
-        "returnDesc": "The table sits quietly at the center of the parlor, its faded lace runner undisturbed beneath the steady glow of the candles. It looks much the same as when you last saw it.",
+        "description": "Stepping through the open doorway, you find yourself in a parlor frozen somewhere between elegance and decay. The air is stale, carrying the faint scent of old perfume and dust. A round table commands the center of the room, draped in a faded lace runner and surrounded by mismatched chairs with sunken cushions. On its surface rests a torn page---ripped cleanly from a larger book or diary---with a large brass key placed neatly on top, catching the candlelight in a muted glint. Heavy curtains frame tall windows while the warm glow of candles and wall sconces washes over the scattered furnishings: an ornate settee, a pair of armchairs, and a cracked side cabinet leaning slightly under its own weight. The open doorway behind you offers a clear view back into the foyer, reminding you how close you remain to where you first stepped inside.",
+        "returnDesc": "The parlor looks much as it did before... the warm candlelight, the sagging furniture, and the round table at the center giving the room its quiet, faded charm. The open doorway still offers a clear view back into the foyer.",
         "explored": false,
         "choices": {
             "1": {
@@ -119,18 +99,18 @@
     },
     "hallway": {
         "room_code": "HLW",
-        "description": "you are in the hallway with a door on the left and on the right",
-        "returnDesc": "you are back in the hallway",
+        "description": "Stepping beneath the mezzanine, you follow the foyer into a long central hallway. To your left, a large wooden sliding door dominates the wall, its handle worn smooth from years of use. To your right, an open doorway leads into what appears to be a dining room, faintly illuminated by the candlelight within.",
+        "returnDesc": "The hallway looks much the same as before, with the large sliding door and the open dining room entrance still exactly where you remember them. The faint glow from the foyer lingers nearby, reminding you of the path you came from.",
         "explored": false,
         "choices": {
             "1": {
-                "Go through the door on the left": "living_room",
+                "Open the door on the left": "living_room",
                 "once": false,
                 "nav" : true,
                 "item": false
             },
             "2": {
-                "Go through the door on the right": "kitchen",
+                "Investigate the dining room": "dining_room",
                 "once": false,
                 "nav" : true,
                 "item": false
@@ -150,24 +130,44 @@
         "explored": false,
         "choices": {
             "1": {
-                "Go back into the hallway": "hallway",
-                "once": false,
-                "nav" : true,
-                "item": false
-            },
-            "2": {
                 "Pick up the key": "LIV-T-LBD-02",
                 "once": true,
                 "nav" : false,
                 "item": true
             },
-            "3": {
+            "2": {
                 "Pick up the note": "LIV-N-003-01",
                 "once": true,
                 "nav" : false,
                 "item": true
+            },
+            "3": {
+                "Go back into the hallway": "hallway",
+                "once": false,
+                "nav" : true,
+                "item": false
             }
         }
+    },
+    "dining_room": {
+        "room_code": "DIN",
+        "description": "you are in the dining room with a door on the far wall",
+        "returnDesc": "you are back in the dining room",
+        "explored": false,
+        "choices": {
+            "1": {
+                "Go back out into the hallway": "hallway",
+                "once": false,
+                "nav" : true,
+                "item": false
+            },
+            "2": {
+                "Go through the door": "kitchen",
+                "once": false,
+                "nav" : true,
+                "item": false
+            }
+        }        
     },
     "kitchen": {
         "room_code": "KIT",
