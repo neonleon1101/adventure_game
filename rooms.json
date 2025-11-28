@@ -120,20 +120,20 @@
     },
     "living_room": {
         "room_code": "LIV",
-        "description": "you are in the living room",
-        "returnDesc": "you are back in the living room",
+        "description": "Sliding open the large wooden door, you find yourself stepping into a living room that feels both lived-in and long forgotten. A wide stone fireplace dominates the far wall, its mantle coated in a thin layer of dust, and a large portrait hangs above it... its softened features watching the room with an unreadable stillness. The candlelight washes warmly over the faded furniture: a sagging sofa with worn stitching, two armchairs whose cushions have long since lost their shape, and a low coffee table settled between them. On the table rests a yellowed newspaper clipping, its brittle edges curled and its ink faded from years of neglect, as though it has waited untouched for longer than anyone can easily guess.",
+        "returnDesc": "The living room looks much as you left it; the dusty fireplace, the worn furniture, and the quiet stillness giving the space an unchanged, lingering heaviness.",
         "choices": {
             "1": {
-                "Pick up the key": "LIV-T-LBD-02",
+                "Pick up the newspaper": "LIV-N-003-01",
                 "once": true,
                 "nav" : false,
                 "item": true
             },
             "2": {
-                "Pick up the note": "LIV-N-003-01",
+                "Examine the portrait": "The portrait above the fireplace shows a man standing proudly before the freshly carved mouth of a mine, the raw earth behind him marking the earliest days of what would become the Scarlet family legacy. He's dressed in a striking purple suit, its color still vivid despite the painting's age, and his rigid posture suggests a man certain of his own importance. A tarnished bronze nameplate fixed to the ornate frame reads: 'William A. Scarlet --- Scarlet Mine Grand Opening, 1866.' Something about that date lingers in your mind, as though it may matter more than it seems.",
                 "once": true,
                 "nav" : false,
-                "item": true
+                "item": false
             },
             "3": {
                 "Go back into the hallway": "hallway",

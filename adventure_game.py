@@ -322,12 +322,18 @@ def show_gameIntro():
 def newGame():    
     global current_room, inv_items, inv_notes, rooms_explored, removed_choices
 
+    current_room = "exterior"
+    inv_items = []
+    inv_notes = [None, None, None, None, None, None]
+    rooms_explored = []
+    removed_choices = {}
+
     save_data = {
-        "current_room"    : "exterior",
-        "inv_items"       : [],
-        "inv_notes"       : [None, None, None, None, None, None],
-        "rooms_explored"  : [],
-        "removed_choices" : {}
+        "current_room": current_room,
+        "inv_items": inv_items,
+        "inv_notes": inv_notes,
+        "rooms_explored": rooms_explored,
+        "removed_choices": removed_choices
     }
     with open("./save_file.json", "w") as f:
         json.dump(save_data, f, indent=4)
