@@ -21,7 +21,6 @@ play_resumed = False
 current_room = "exterior"
 inv_items = []
 inv_notes = [None, None, None, None, None, None]
-removed_items = []
 rooms_explored = []
 removed_choices = {}
 
@@ -168,14 +167,9 @@ def load_inv_notes(save_data_notes: list):
 
 def load_rooms_explored(save_data_explored: list):
     global rooms_explored, roomContents
-    rooms_explored = save_data_explored
-
-    if rooms_explored:
-        for room in rooms_explored:
-           roomContents[room]['explored'] = True
-        return
-    else:
-        return
+    
+    for room in save_data_explored:
+        rooms_explored.append(room)
 
 def load_removed_choices(save_data_removed: dict):
     global removed_choices, roomContents
@@ -193,7 +187,6 @@ def load_removed_choices(save_data_removed: dict):
 def enterRoom(room_key: str, user_input: str):
     global roomContents, current_room, rooms_explored
 
-    roomContents[room_key]['explored'] = True 
     if room_key not in rooms_explored:
         rooms_explored.append(room_key)
 
@@ -228,6 +221,12 @@ def removeChoice(room_key:str, user_input: str):
     else:
         pass
     removed_choices[room_key].append(user_input)
+
+# Reloads room data for when the player starts a new game without exiting the program
+def reset_roomData():
+    global roomContents
+    with open("./rooms.json", "r") as f:
+        roomContents = json.load(f)
 #^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -320,7 +319,20 @@ def show_gameIntro():
     input('')
 
 # Show New Game loading
-def show_newGame():
+def newGame():    
+    global current_room, inv_items, inv_notes, rooms_explored, removed_choices
+
+    save_data = {
+        "current_room"    : "exterior",
+        "inv_items"       : [],
+        "inv_notes"       : [None, None, None, None, None, None],
+        "rooms_explored"  : [],
+        "removed_choices" : {}
+    }
+    with open("./save_file.json", "w") as f:
+        json.dump(save_data, f, indent=4)
+    reset_roomData()
+
     print('Loading...')
     time.sleep(3)
     print("New game!")
@@ -404,15 +416,12 @@ def show_Choices(room_key: str, toggleType: bool):
 #----------------------
 # Check if room has been explored or not
 def check_explored(room_key: str) -> bool: # Read as "has [room_key] been explored?" return false = no, return true = yes
-    global roomContents
+    global rooms_explored, roomContents
 
-    explored = roomContents[room_key]['explored']
-    if explored == False:
+    if room_key not in rooms_explored:
         return False  # <= First time visit
-    elif explored == True:
-        return True   # <= Return to room
     else:
-        print('ERROR: check_explored')
+        return True   # <= Return to room
 
 # Check if the choice is avalaible more than once or not (returns bool)
 def check_once(room_key: str, user_input: str) -> bool:
@@ -452,15 +461,12 @@ def check_item(room_key: str, user_input: str) -> bool:
 
 # Checks if the player has a specific needed item (meets 'hasItem' requirement)
 def check_hasItem(item_code: str) -> bool:
-    global itemContents
+    global inv_items
 
-    hasItem = itemContents[item_code]['hasItem']
-    if hasItem == False:
-        return False
-    elif hasItem == True:
+    if item_code in inv_items:
         return True
     else:
-        print('ERROR: check_hasItem')
+        return False
 
 # Checks if the item is essential or not (needed to win the game)
 def check_essential(item_code:str) -> bool:
@@ -532,7 +538,6 @@ def removeItem(user_input: str):
             item = inv_items[int(user_input) - 1]
             if item in inv_items:
                 inv_items.remove(item)
-                removed_items.append(item)
             else:
                 return
             msg = "You removed the " + get_itemName(item)
@@ -670,7 +675,7 @@ def show_useItemDesc(item_code: str) -> str:
 while run:
     while mainMenu:
         show_mainMenu()
-        
+
         dest = input('> ')
 
         if dest == '1':
@@ -683,9 +688,8 @@ while run:
                     pass
                 else:
                     break
-            show_newGame()
+            newGame()
             show_gameIntro()
-            saveGame()
             mainMenu = False
             play = True
         elif dest == '2':
@@ -724,9 +728,21 @@ while run:
             print("Game saved!")
             time.sleep(1)
         elif user_input == '3':
+            slowReader("Any unsaved progress will be lost. Are you sure you want to quit to the main menu?", False)
+            response = input("> ").lower().strip()
+            if response == 'yes':
+                pass
+            else:
+                break
             pauseMenu = False
             mainMenu = True
         elif user_input == '4':
+            slowReader("Any unsaved progress will be lost. Are you sure you want to quit?", False)
+            response = input("> ").lower().strip()
+            if response == 'yes':
+                pass
+            else:
+                break
             slowReader("Thanks for playing, bye!", False)
             os.system('cls')
             os.system('color 07')
