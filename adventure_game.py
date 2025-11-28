@@ -15,9 +15,6 @@ inventoryMenu = False
 itemsMenu = False
 notesMenu = False
 play = False
-
-# Other global booleans
-skip_Description = False
 play_resumed = False
 
 # Player Stats <= Stuff that needs to be 'saved' and recalled when 'loaded'
@@ -26,6 +23,7 @@ inv_items = []
 inv_notes = [None, None, None, None, None, None]
 removed_items = []
 rooms_explored = []
+removed_choices = {}
 
 # example change on master branch
 
@@ -100,21 +98,104 @@ def fastReader(text: str, toggleDivide: bool):
 #----------------------
 #  GAME FUNCTIONS
 #----------------------
-
 # Saves relevant game data to a .txt file to be loaded later
 def saveGame():
-    ...
+    global current_room, inv_items, inv_notes, rooms_explored, removed_choices
+
+    save_data = {
+        "current_room": current_room,
+        "inv_items": inv_items,
+        "inv_notes": inv_notes,
+        "rooms_explored": rooms_explored,
+        "removed_choices": removed_choices
+    }
+
+    with open("./save_file.json", "w") as f:
+        json.dump(save_data, f, indent=4)
+    return
+
+# Checks if any save data exists
+def check_save_data() -> bool:
+    filepath = "./save_file.json"
+    if os.path.getsize(filepath) == 0:
+        return False
+    else:
+        return True
 
 # Loads relevant game data from a .txt file and continues the game from there
 def loadGame():
-    ...
+    with open("./save_file.json", "r") as f:
+        save_data = json.load(f)
+    
+    if check_save_data() == True:
+        load_current_room(save_data["current_room"])
+        load_inv_items(save_data["inv_items"])
+        load_inv_notes(save_data["inv_notes"])
+        load_rooms_explored(save_data["rooms_explored"])
+        load_removed_choices(save_data["removed_choices"])
+    if check_save_data() == False:
+        msg = "No save data found"
+        slowReader(msg, False)
+        time.sleep(3)
+
+# LOAD FUNCTIONS: Functions that run whenever the player loads a save to make sure all values are correct
+def load_current_room(save_data_room: str):
+    global current_room
+    current_room = save_data_room
+    return
+
+def load_inv_items(save_data_items: list):
+    global inv_items
+
+    if not save_data_items:
+        return
+    for item_code in save_data_items:
+        inv_items.append(item_code)
+        itemContents[item_code]['hasItem'] = True
+    return
+
+def load_inv_notes(save_data_notes: list):
+    global inv_notes
+
+    for item_code in save_data_notes:
+        if item_code is None:
+            continue
+        code_values = item_code.split('-', 3)
+        slot_number = int(code_values[2])
+        inv_notes[slot_number - 1] = item_code
+        itemContents[item_code]['hasItem'] = True
+    return
+
+def load_rooms_explored(save_data_explored: list):
+    global rooms_explored, roomContents
+    rooms_explored = save_data_explored
+
+    if rooms_explored:
+        for room in rooms_explored:
+           roomContents[room]['explored'] = True
+        return
+    else:
+        return
+
+def load_removed_choices(save_data_removed: dict):
+    global removed_choices, roomContents
+
+    if not save_data_removed:
+        return
+        
+    for room_key, choice_list in save_data_removed.items():
+        for choice_key in choice_list:
+            if choice_key in roomContents[room_key]['choices']:
+                del roomContents[room_key]['choices'][choice_key]
+    removed_choices = save_data_removed.copy()
 
 # When nav = true, changes current_room based on user_input
 def enterRoom(room_key: str, user_input: str):
-    global roomContents, current_room
+    global roomContents, current_room, rooms_explored
 
     roomContents[room_key]['explored'] = True 
-    rooms_explored.append(room_key)
+    if room_key not in rooms_explored:
+        rooms_explored.append(room_key)
 
     choice = roomContents[room_key]['choices'][user_input]
     
@@ -133,12 +214,20 @@ def enterRoom(room_key: str, user_input: str):
         print("ERROR: enterRoom")
         return
 
-# Removes choice from list of choices for a room
+# Removes choice from list of choices for a room and adds it to the removed_choices dict
 def removeChoice(room_key:str, user_input: str):
-    global roomContents
+    global roomContents, removed_choices
 
     choices = roomContents[room_key]['choices']
+    if user_input not in choices:
+        return
     del choices[user_input]
+
+    if room_key not in removed_choices:
+        removed_choices[room_key] = []
+    else:
+        pass
+    removed_choices[room_key].append(user_input)
 #^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -230,6 +319,20 @@ def show_gameIntro():
     print("press 'enter' to continue")
     input('')
 
+# Show New Game loading
+def show_newGame():
+    print('Loading...')
+    time.sleep(3)
+    print("New game!")
+    time.sleep(1)
+
+# Show Loaded Game loading
+def show_loadGame():
+    print('Loading...')
+    time.sleep(3)
+    print("Game loaded!")
+    time.sleep(1)
+
 # Show Description of Whatever room the player is in
 def show_roomDesc(room_key: str, toggleType: bool):
     global roomContents
@@ -271,7 +374,6 @@ def show_OnceDesc(room_key: str, user_input: str):
     time.sleep(2)
     print("press 'enter' to continue")
     input('')
-    removeChoice(room_key, user_input)
 
 # Show current options
 def show_Choices(room_key: str, toggleType: bool):
@@ -433,14 +535,14 @@ def removeItem(user_input: str):
                 removed_items.append(item)
             else:
                 return
-            msg = show_removeItemDesc(item)
+            msg = "You removed the " + get_itemName(item)
             slowReader(msg, False)
             time.sleep(1)
         else:
             print("Remove canceled")
             time.sleep(1)
     elif check_essential(item) == True:
-        msg = show_removeItemDesc(item)
+        msg = "You cannot remove this item"
         slowReader(msg, False)
         time.sleep(1)
         return
@@ -474,6 +576,34 @@ def get_itemName(item_code: str) -> str:
     else:
         return None
 
+# Searches through roomContents and gets the room that an item comes from based off its item_code
+def get_itemRoom(item_code: str) -> str:
+    global roomContents
+
+    code_values = item_code.split('-', 3)
+
+    for room in roomContents:
+        room_code = roomContents[room]['room_code']
+        if code_values[0] == room_code:
+            return room
+        else:
+            pass
+
+# Searches through roomContents and gets the choice number that an item corresponds to bassed off its item_code
+def get_itemChoice(item_code: str) -> str:
+    global roomContents
+
+    room = get_itemRoom(item_code)
+    choices = roomContents[room]['choices']
+
+    for choice_number, choice_data in choices.items():
+        for key in choice_data.keys():
+            if key in ("once", "nav", "item"):
+                continue
+            if choice_data[key] == item_code:
+                return choice_number
+    return None     
+            
 # PRINVENTORY FUNCTIONS (print + inventory, credit: Aiden Williams)
 def show_itemDesc(user_input: str) -> str:
     global inv_items
@@ -522,15 +652,6 @@ def show_addItemDesc(item_code: str) -> str:
     else:
         return None
 
-def show_removeItemDesc(item_code: str) -> str:
-    global itemContents
-
-    item = itemContents[item_code]
-    if item:
-        return item.get('removeDescription')
-    else:
-        return None
-
 def show_useItemDesc(item_code: str) -> str:
     global itemContents
 
@@ -553,18 +674,27 @@ while run:
         dest = input('> ')
 
         if dest == '1':
-            print('Loading...')
-            time.sleep(3)
-            print("New game!")
-            time.sleep(1)
+            if check_save_data() == False:
+                pass
+            elif check_save_data() == True:
+                slowReader("Starting a new game will erase any previous save data. Are you sure you want to start a new game?", False)
+                response = input('> ')
+                if response == 'yes':
+                    pass
+                else:
+                    break
+            show_newGame()
             show_gameIntro()
+            saveGame()
             mainMenu = False
             play = True
         elif dest == '2':
-            print('Loading...')
-            time.sleep(3)
-            print("Game loaded!")
-            time.sleep(1)
+            if check_save_data() == False:
+                slowReader("No save data found", False)
+                time.sleep(2)
+                break
+            show_loadGame()
+            loadGame()
             mainMenu = False
             play = True
         elif dest == '3':
@@ -589,6 +719,8 @@ while run:
             os.system('cls')
         elif user_input == '2':
             saveGame()
+            print("Saving...")
+            time.sleep(3)
             print("Game saved!")
             time.sleep(1)
         elif user_input == '3':
@@ -673,7 +805,6 @@ while run:
             show_roomDesc(current_room, play_resumed)
         elif roomExplored == True:
             show_ReturnDesc(current_room, play_resumed)
-
         show_Choices(current_room, play_resumed)
         play_resumed = False
 
@@ -691,6 +822,7 @@ while run:
                 if check_item(current_room, user_input) == False:
                     show_OnceDesc(current_room, user_input)
                     play_resumed = True
+                    removeChoice(current_room, user_input)
                 elif check_item(current_room, user_input) == True:
                     if check_invFull(current_room, user_input) == False:
                         addItem(current_room, user_input)
@@ -702,9 +834,9 @@ while run:
                         slowReader(msg, False)
                         time.sleep(1)
                         play_resumed = True
-                else:
-                    if check_nav(current_room, user_input) == True:
-                        enterRoom(current_room, user_input)
+            else:
+                if check_nav(current_room, user_input) == True:
+                    enterRoom(current_room, user_input)
         else:
             print("I don't understand that command.")
             time.sleep(1)
