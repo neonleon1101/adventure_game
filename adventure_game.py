@@ -943,9 +943,18 @@ while run:
                         slowReader(msg, False)
                         time.sleep(1)
                         play_resumed = True
-            else:
+                    else:
+                        continue
+            elif check_once(current_room, user_input) == False:
                 if check_nav(current_room, user_input) == True:
                     enterRoom(current_room, user_input)
+                elif check_nav(current_room, user_input) == False:
+                    show_OnceDesc(current_room, user_input)
+                    play_resumed = True
+                else:
+                    continue
+            else:
+                continue
         else:
             print("I don't understand that command.")
             time.sleep(1)

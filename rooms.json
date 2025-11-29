@@ -130,16 +130,16 @@
                 "item": false
             },
             "2": {
+                "Examine the portrait": "The portrait above the fireplace shows a man standing proudly before the freshly carved mouth of a mine, the raw earth behind him marking the earliest days of what would become the Scarlet family legacy. He's dressed in a striking purple suit, its color still vivid despite the painting's age, and his rigid posture suggests a man certain of his own importance. A tarnished bronze nameplate fixed to the ornate frame reads: 'William A. Scarlet --- Scarlet Mine Grand Opening, 1866.' Something about that date lingers in your mind, as though it may matter more than it seems.",
+                "once": false,
+                "nav" : false,
+                "item": false
+            },
+            "3": {
                 "Pick up the newspaper": "LIV-N-003-01",
                 "once": true,
                 "nav" : false,
                 "item": true
-            },
-            "3": {
-                "Examine the portrait": "The portrait above the fireplace shows a man standing proudly before the freshly carved mouth of a mine, the raw earth behind him marking the earliest days of what would become the Scarlet family legacy. He's dressed in a striking purple suit, its color still vivid despite the painting's age, and his rigid posture suggests a man certain of his own importance. A tarnished bronze nameplate fixed to the ornate frame reads: 'William A. Scarlet --- Scarlet Mine Grand Opening, 1866.' Something about that date lingers in your mind, as though it may matter more than it seems.",
-                "once": true,
-                "nav" : false,
-                "item": false
             }
         }
     },
@@ -494,6 +494,17 @@
                 "nav" : true,
                 "item": false
             }
+        }
+    },
+    "libray_door": {
+        "room_code": "LBD",
+        "description": "It's a big ass locked door, and I haven't coded this part yet so you can't open it, sorry go away lmao.",
+        "returnDesc" : "Believe it or not, the door is still locked.",
+        "choices": {
+            "Turn yo dumbass around" : "foyer",
+            "once": false,
+            "nav" : true,
+            "item": false
         }
     }
 }
