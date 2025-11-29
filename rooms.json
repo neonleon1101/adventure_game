@@ -496,15 +496,17 @@
             }
         }
     },
-    "libray_door": {
+    "library_door": {
         "room_code": "LBD",
         "description": "It's a big ass locked door, and I haven't coded this part yet so you can't open it, sorry go away lmao.",
         "returnDesc" : "Believe it or not, the door is still locked.",
         "choices": {
-            "Turn yo dumbass around" : "foyer",
-            "once": false,
-            "nav" : true,
-            "item": false
+            "1": {
+                "Turn yo dumbass around" : "foyer",
+                "once": false,
+                "nav" : true,
+                "item": false
+            }
         }
     }
 }
