@@ -74,22 +74,22 @@
         "returnDesc": "The parlor looks much as it did before... the warm candlelight, the sagging furniture, and the round table at the center giving the room its quiet, faded charm. The open doorway still offers a clear view back into the foyer.",
         "choices": {
             "1": {
+                "Go back to the foyer": "foyer",
+                "once": false,
+                "nav" : true,
+                "item": false
+            },
+            "2": {
                 "Pick up the key": "PTB-T-LBD-01",
                 "once": true,
                 "nav" : false,
                 "item": true
             },
-            "2": {
+            "3": {
                 "Pick up the note": "PTB-N-001-02",
                 "once": true,
                 "nav" : false,
                 "item": true
-            },
-            "3": {
-                "Go back to the foyer": "foyer",
-                "once": false,
-                "nav" : true,
-                "item": false
             }
         }
     },
@@ -124,38 +124,38 @@
         "returnDesc": "The living room looks much as you left it; the dusty fireplace, the worn furniture, and the quiet stillness giving the space an unchanged, lingering heaviness.",
         "choices": {
             "1": {
+                "Go back into the hallway": "hallway",
+                "once": false,
+                "nav" : true,
+                "item": false
+            },
+            "2": {
                 "Pick up the newspaper": "LIV-N-003-01",
                 "once": true,
                 "nav" : false,
                 "item": true
             },
-            "2": {
+            "3": {
                 "Examine the portrait": "The portrait above the fireplace shows a man standing proudly before the freshly carved mouth of a mine, the raw earth behind him marking the earliest days of what would become the Scarlet family legacy. He's dressed in a striking purple suit, its color still vivid despite the painting's age, and his rigid posture suggests a man certain of his own importance. A tarnished bronze nameplate fixed to the ornate frame reads: 'William A. Scarlet --- Scarlet Mine Grand Opening, 1866.' Something about that date lingers in your mind, as though it may matter more than it seems.",
                 "once": true,
                 "nav" : false,
-                "item": false
-            },
-            "3": {
-                "Go back into the hallway": "hallway",
-                "once": false,
-                "nav" : true,
                 "item": false
             }
         }
     },
     "dining_room": {
         "room_code": "DIN",
-        "description": "you are in the dining room with a door on the far wall",
-        "returnDesc": "you are back in the dining room",
+        "description": "Stepping into the dining room, you find a long, imposing table stretching down the center of the room, its surface mostly bare beneath a thin layer of dust. Only the head of the table shows signs of regular use... the chair pushed back slightly, its cushion worn in a way that suggests the same person sat there day after day. Just beside it, another place has been set with deliberate care, yet the untouched dust coating the plate and silverware reveals it hasn't been used in a very long time. The two settings---one lived-in, one frozen in remembrance---cast a quiet, uneasy weight across the room. As you take a step further inside, a sudden scurrying sound draws your eye... a small rat darts across the floor and disappears through a tiny hole in the far wall, vanishing into whatever room lies beyond. On that same wall, a simple wooden door waits slightly ajar, almost certainly leading toward the kitchen.",
+        "returnDesc": "The dining room is just as still as before, the long table and dim candlelight giving the space the same quiet, heavy atmosphere.",
         "choices": {
             "1": {
-                "Go back out into the hallway": "hallway",
+                "Go through the door": "kitchen",
                 "once": false,
                 "nav" : true,
                 "item": false
             },
             "2": {
-                "Go through the door": "kitchen",
+                "Go back out into the hallway": "hallway",
                 "once": false,
                 "nav" : true,
                 "item": false
@@ -164,39 +164,107 @@
     },
     "kitchen": {
         "room_code": "KIT",
-        "description": "you are in the kitchen",
-        "returnDesc": "you are back in the kitchen",
+        "description": "Stepping into the kitchen, you're met with the mix of worn tile floors and warm candlelight drifting in from the dining room. An old refrigerator stands against the far wall, its enamel chipped and humming faintly with age. A narrow door hangs slightly ajar, revealing the edge of a pantry beyond, while a heavier exterior door on the opposite wall leads out toward the greenhouse or garden, carrying a faint earthy scent through its cracks. In the center of the room sits a wooden island, and perched atop it is the same rat you saw moments ago... now staring directly at you. With deliberate intention, it grabs a crumpled piece of paper from the countertop, hops down to the floor, and scurries toward a small hole at the base of the wall. Near the hole's entrance, the tile is smeared with faded streaks of peanut butter and jelly, a clear indication of the creature's favorite meal. Just before vanishing inside, the rat pauses, peeks out at you with the note still in its mouth, and slowly retreats, as if urging you to follow.",
+        "returnDesc": "The kitchen feels much the same as before, the worn tiles and old refrigerator giving it a tired stillness. Near the wall, the rat's hole, and the faint smears of peanut butter and jelly remain just as you remember them.",
         "choices": {
             "1": {
-                "Investigate the pantry": "pantry",
+                "Investigate the rat's hole": "rat_hole",
                 "once": false,
                 "nav" : true,
                 "item": false
             },
             "2": {
-                "Investigate the greenhouse": "greenhouse",
+                "Open the fridge": "fridge",
                 "once": false,
                 "nav" : true,
                 "item": false
             },
             "3": {
-                "Go back to the hallway": "hallway",
+                "Investigate the pantry": "pantry",
+                "once": false,
+                "nav" : true,
+                "item": false
+            },
+            "4": {
+                "Go out to the greenhouse": "greenhouse",
+                "once": false,
+                "nav" : true,
+                "item": false
+            },
+            "5": {
+                "Go back to the dining room": "dining_room",
                 "once": false,
                 "nav" : true,
                 "item": false
             }
         }
     },
+    "rat_hole": {
+        "room_code": "RAT",
+        "description": "You crouch beside the small hole in the wall, but the rat is already deep within the shadows, the crumpled note well out of reach. The floor around the entrance is smeared with old peanut butter and jelly, stained into the tiles as if from countless tiny meals. You can't help but think 'if only there were some way to lure the rat back out.'",
+        "returnDesc": "You crouch back down to the investigate rat's home.",
+        "choices":{
+            "1": {
+                "Stand back up": "kitchen",
+                "once": false,
+                "nav" : true,
+                "item": false
+            }
+        }
+    },
+    "fridge": {
+        "room_code": "FRD",
+        "description": "You pull open the refrigerator door, surprised when a faint chill washes over you... the old appliance still humming stubbornly after all these years. Inside, the shelves are nearly bare: several small cups of yogurt lined neatly along one side, and a single jar of grape jelly sitting alone on the top shelf, its label faded but recognizable.",
+        "returnDesc": "The refrigerator hums softly as you open it again, its faint cool air drifting out just as before.",
+        "choices":{
+            "1": {
+                "Close the fridge": "kitchen",
+                "once": false,
+                "nav" : true,
+                "item": false
+            },
+            "2": {
+                "Take a yogurt cup": "FRD-T-XXX-01",
+                "once": true,
+                "nav" : false,
+                "item": true
+            },
+            "3": {
+                "Take the jelly": "FRD-T-XXX-02",
+                "once": true,
+                "nav" : false,
+                "item": true
+            }
+        }
+    },
     "pantry": {
         "room_code": "PAN",
-        "description": "you are in the pantry",
-        "returnDesc": "you are back in the pantry",
+        "description": "Stepping into the pantry, you're met with the stale, musty scent of old wood and decades of dust. The narrow shelves sag slightly under the weight of their forgotten contents, most of it long past its prime. Amid the clutter, a jar of peanut butter sits unopened beside a loaf of bread sealed in a plastic bag that's stiff with age. Stacked beside them---and crammed into nearly every remaining shelf---are countless boxes of macaroni and cheese, piled haphazardly as though someone once stocked them in bulk and never got the chance to go through it all.",
+        "returnDesc": "The pantry feels just as you left it: dusty, cramped, and crowded with its forgotten shelves of old mac and cheese.",
         "choices": {
             "1": {
                 "Go back into the kitchen": "kitchen",
                 "once": false,
                 "nav" : true,
                 "item": false
+            },
+            "2": {
+                "Take a box of mac and cheese": "PAN-T-XXX-01",
+                "once": true,
+                "nav" : false,
+                "item": true
+            },
+            "3": {
+                "Take the peanut butter": "PAN-T-XXX-02",
+                "once": true,
+                "nav" : false,
+                "item": true
+            },
+            "4": {
+                "Take the loaf of bread": "PAN-T-XXX-03",
+                "once": true,
+                "nav" : false,
+                "item": true
             }
         }
     },

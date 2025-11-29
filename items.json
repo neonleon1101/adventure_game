@@ -20,11 +20,60 @@
         "addDescription": "You picked up the note.",
         "useDescription": "You cannot use this item."
     },
+    "RAT-N-002-01": {
+        "item_name": "Internal Corporate Memo",
+        "essential": true,
+        "description": "Scarlet Mining Co. --- Internal Correspondence                                   To: All Supervisors                                                              Date: July 18, 1974                                                              Subject: Productivity Quotas\n\nEffective immediately, daily extraction quotas will increase across Sectors 2-6.\n\nWorkers expressing 'concerns' about fatigue or safety procedures are to be documented and reassigned as needed.\n\nAdditionally, due to a labor shortage, temporary hires will be permitted in non-hazardous auxiliary roles regardless of age or prior experience. This classification is non-negotiable and should not be discussed outside company property.\n\nReport all disruptions to Office 4C.\n\n-H.S.",
+        "addDescription": "With the rat gone, you reach down and pick up the note.",
+        "useDescription": "You cannot use this item."
+    },
     "LIV-N-003-01": {
         "item_name": "Newspaper Clipping",
         "essential": true,
         "description": "THIRTEEN DEAD IN MINE COLLAPSE --- COMPANY CALLS IT 'UNFORESEEABLE'              Rockford County Herald --- August 22, 1974\n\nA partial collapse in the Scarlet Mining Co. shaft system left thirteen confirmed dead, including multiple 'auxiliary assistants,' a term the company declined to clarify.\n\nRepresentatives denied allegations of unsafe conditions and insisted the collapse was caused by an 'unpredictable geological shift.'\n\nGrieving families gathered outside the mine entrance demanding answers. Some claim the company is withholding information about the cause.\n\nScarlet Mining Co. has promised a full investigation.\n\nNo timeline has been provided.",
         "addDescription": "You picked up the newspaper.",
         "useDescription": "You cannot use this item."
+    },
+    "FRD-T-XXX-01": {
+        "item_name": "Yogurt Cup",
+        "essential": false,
+        "description": "A small cup of vanilla greek yogurt with the label on top, 'Best if used by March 3, 2013.'",
+        "addDescription": "You take the yogurt cup from the fridge.",
+        "useDescription": "You cannot use this item."
+    },
+    "FRD-T-XXX-02": {
+        "item_name": "Grape Jelly",
+        "essential": false,
+        "description": "A jar of grape jelly with a faded label and slightly sticky lid. It's still sealed, and still fresh.",
+        "addDescription": "You take the jar of jelly from the fridge.",
+        "useDescription": "You spread the jelly over the bread."
+    },
+    "PAN-T-XXX-01": {
+        "item_name": "Mac and Cheese",
+        "essential": false,
+        "description": "An unopened box of macaroni and cheese, its cardboard a bit worn with age.",
+        "addDescription": "You take a box of mac and cheese from the shelf.",
+        "useDescription": "You cannot use this item."
+    },
+    "PAN-T-XXX-02": {
+        "item_name": "Peanut Butter",
+        "essential": false,
+        "description": "A jar of peanut butter, smooth and unopened, the lid coated in a thin layer of dust.",
+        "addDescription": "You take the jar of peanut butter from the shelf.",
+        "useDescription": "You spread the peanut butter over the bread."
+    },
+    "PAN-T-XXX-03": {
+        "item_name": "Loaf of Bread",
+        "essential": false,
+        "description": "A simple loaf of bread sealed in plastic, a bit firm but still perfectly usable.",
+        "addDescription": "You take the loaf of bread from the shelf.",
+        "useDescription": "You make a peanut butter and jelly sandwich."
+    },
+    "XXX-T-RAT-01": {
+        "item_name": "Peanut Buter and Jelly Sandwich",
+        "essential": false,
+        "description": "A neatly made peanut butter and jelly sandwich... the bread soft, the peanut butter smooth, and the grape jelly giving off a faint, sweet scent.",
+        "addDescription": "You carefully spread the peanut butter and grape jelly onto the slices of bread and press them together, forming a simple but satisfying peanut butter and jelly sandwich.",
+        "useDescription": "You make a peanut butter and jelly sandwich."
     }
 }

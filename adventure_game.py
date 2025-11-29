@@ -24,7 +24,10 @@ inv_notes = [None, None, None, None, None, None]
 rooms_explored = []
 removed_choices = {}
 
-# example change on master branch
+# Dictionary of crafting/combining recipes
+recipes = {
+    tuple(sorted(["PAN-T-XXX-02", "FRD-T-XXX-02", "PAN-T-XXX-03"])): "XXX-T-RAT-01"
+}
 
 #----------------------
 # TYPEWRITER
@@ -283,9 +286,11 @@ def show_itemsMenu():
             item_name = get_itemName(item)
             item_number = item_number + 1
             print(f' {item_number} - {item_name}')
-        print('\n r - Remove Item')        
+        print('\n c - Combine Items')
+        print(' r - Remove Item')        
     print(' 0 - Return')
     print('\n' + textDivide)
+    print("Enter the number of any item to examine it further.")
 
 # Shows the notes menu within the inventory menu
 def show_notesMenu():
@@ -304,6 +309,7 @@ def show_notesMenu():
             
     print('\n 0 - Return')
     print('\n' + textDivide)
+    print("Enter the number of any item to examine it further.")
 
 # Shows Game Intro
 def show_gameIntro():
@@ -319,7 +325,7 @@ def show_gameIntro():
     input('')
 
 # Show New Game loading
-def newGame():    
+def newGame():
     global current_room, inv_items, inv_notes, rooms_explored, removed_choices
 
     current_room = "exterior"
@@ -395,13 +401,13 @@ def show_OnceDesc(room_key: str, user_input: str):
 
 # Show current options
 def show_Choices(room_key: str, toggleType: bool):
-    global roomContents
+    global roomContents, current_room
 
     if toggleType == False:
         slowReader("What will you do?", False)
     elif toggleType == True:
         fastReader("What will you do?", False)
-
+   
     choices = roomContents[room_key]['choices']
     for number, data in choices.items():
         choiceNumber = number
@@ -505,6 +511,19 @@ def check_invFull(room_key: str, user_input: str) -> bool:
         return False
     else:
         pass
+
+# Checks if the player meets the conditions for an event loop, then sends them there if so
+def check_ifEvent():
+    global current_room
+    
+    if current_room == "rat_hole":
+        if check_hasItem("XXX-T-RAT-01"):
+            event_lureRat()
+            return
+        else:
+            return
+    else:
+        return
 #^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -530,6 +549,7 @@ def addItem(room_key: str, user_input: str):
     itemContents[item_code]['hasItem'] = True
     msg = show_addItemDesc(item_code)
     slowReader(msg, False)
+    time.sleep(1)
 
 # Removes an item from the player's inventory and places it in the current_room
 def removeItem(user_input: str):
@@ -537,7 +557,7 @@ def removeItem(user_input: str):
 
     item = inv_items[int(user_input) - 1]
     if check_essential(item) == False:
-        msg = "Once you remove and item it will be lost forever. Are you sure you want to remove this item?"
+        msg = "Once you remove an item it will be lost forever. Are you sure you want to remove this item?"
         slowReader(msg, False)
         removePrompt = input('> ').lower().strip()
         if removePrompt == 'yes':
@@ -559,6 +579,43 @@ def removeItem(user_input: str):
         return
     else:
         print("ERROR: removeItem")
+
+# Combines 2 or more items if they're item code it in the recipes dictionary
+def combineItems():
+    global itemContents, inv_items
+    
+    slowReader("Which items would you like to combine? (Input as: #-#-#)", False)
+    user_input = input('> ').strip()
+    numbers = user_input.split('-')
+
+    item_codes = []
+    for number in numbers:
+        if not number.isdigit():
+            print("Invalid item(s)")
+            time.sleep(2)
+            return
+        else:
+            index = int(number)
+            if index < 1 or index > len(inv_notes):
+                print("Invalid item number")
+                time.sleep(2)
+                return
+            else:
+                item_codes.append(inv_items[index-1])
+    
+    sorted_codes = tuple(sorted(item_codes))
+    if sorted_codes in recipes:
+        new_item = recipes[sorted_codes]
+        for code in item_codes:
+            inv_items.remove(code)
+        inv_items.append(new_item)
+        msg = show_addItemDesc(new_item)
+        slowReader(msg, False)
+        time.sleep(1)
+    else:
+        print("Those items cannot be combined.")
+        time.sleep(2)
+        return
 
 # Searchs through roomContents and gets the item code of the item of the corresponding input
 def get_itemCode(room_key: str, user_input: str) -> str:
@@ -671,6 +728,29 @@ def show_useItemDesc(item_code: str) -> str:
         return item.get('useDescription')
     else:
         return None
+#^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+#----------------------
+#  EVENT LOOPS
+#----------------------
+# Luring the rat out of the hole with the sandwich
+def event_lureRat():
+    global inv_items, current_room
+    
+    os.system('cls')
+    msg = "You crouch beside the small hole, the peanut butter and jelly sandwich in your hand filling the air with a faint, sweet scent. Almost immediately, you hear soft shuffling from within the darkness, and the rat begins to inch its way out, eyes fixed on the sandwich. You gently place it on the floor, backing your hand away. The rat hesitates only a moment before emerging fully, the crumpled note still clamped in its teeth. It drops the note at your feet, then seizes the sandwich and drags it eagerly back into its hole, disappearing with surprising strength. With the rat gone, you reach down and pick up the note."
+    slowReader(msg, True)
+    inv_items.remove("XXX-T-RAT-01")
+    item_code = "RAT-N-002-01"
+    code_values = item_code.split('-', 3)
+    slot_number = int(code_values[2])
+    inv_notes[slot_number - 1] = item_code
+    input("press 'enter' to continue")
+    current_room = "kitchen"
+    return
+
 #^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -796,6 +876,12 @@ while run:
             else:
                 print("I don't understand that command.")
                 time.sleep(1)
+        elif user_input == 'c':
+            if inv_items:
+                combineItems()
+            else:
+                print("I don't understand that command.")
+                time.sleep(1)
         elif user_input in '1023456789':
             if int(user_input) in range(1, len(inv_items)+1):
                 show_itemDesc(user_input)
@@ -821,6 +907,7 @@ while run:
 
     while play:
         os.system('cls')
+        check_ifEvent()
 
         roomExplored = check_explored(current_room)
         if roomExplored == False:
