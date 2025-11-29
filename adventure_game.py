@@ -111,7 +111,6 @@ def saveGame():
         "rooms_explored": rooms_explored,
         "removed_choices": removed_choices
     }
-
     with open("./save_file.json", "w") as f:
         json.dump(save_data, f, indent=4)
     return
@@ -312,12 +311,12 @@ def show_notesMenu():
     print("Enter the number of any item to examine it further.")
 
 # Shows Game Intro
-def show_gameIntro():
+def show_prologue():
     global current_room, gameChoices, commands
     current_room = "exterior"
     
     os.system('cls')
-    with open('./text/introduction.txt', 'r', errors='ignore') as file:
+    with open('./text/prologue.txt', 'r', errors='ignore') as file:
         content = file.read()
     slowReader(content, True)
     time.sleep(2)
@@ -753,7 +752,7 @@ def event_lureRat():
 
 #^^^^^^^^^^^^^^^^^^^^^^
 
-# commitable change die
+
 
 #----------------------
 # GAME LOOP
@@ -775,7 +774,7 @@ while run:
                 else:
                     break
             newGame()
-            show_gameIntro()
+            show_prologue()
             mainMenu = False
             play = True
         elif dest == '2':

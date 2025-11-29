@@ -16,21 +16,21 @@
     "PTB-N-001-02": {
         "item_name": "Torn Diary Entry",
         "essential": true,
-        "description": "Dated: March 3, 1974\n\n\n\nI heard the sirens again today.\n\nHarold dismisses it as 'routine checks,' but he forgets I grew up around the mines. I know the sound of panic when I hear it. The men look tired... leaner every week, like they're working double shifts. Maybe they are. Harold never talks about the mine anymore. Every attempt I make leads to an argument.\n\nI don't know what he's hiding, but whatever it is... it's getting worse.\n\nHe used to be a kinder man.\n\n\n\nI pray he finds his way back.",
+        "description": "Dated: March 3, 1995\n\n\n\nI heard the sirens again today.\n\nHarold dismisses it as 'routine checks,' but he forgets I grew up around the mines. I know the sound of panic when I hear it. The men look tired... leaner every week, like they're working double shifts. Maybe they are. Harold never talks about the mine anymore. Every attempt I make leads to an argument.\n\nI don't know what he's hiding, but whatever it is... it's getting worse.\n\nHe used to be a kinder man.\n\n\n\nI pray he finds his way back.",
         "addDescription": "You picked up the note.",
         "useDescription": "You cannot use this item."
     },
     "RAT-N-002-01": {
         "item_name": "Internal Corporate Memo",
         "essential": true,
-        "description": "Scarlet Mining Co. --- Internal Correspondence                                   To: All Supervisors                                                              Date: July 18, 1974                                                              Subject: Productivity Quotas\n\nEffective immediately, daily extraction quotas will increase across Sectors 2-6.\n\nWorkers expressing 'concerns' about fatigue or safety procedures are to be documented and reassigned as needed.\n\nAdditionally, due to a labor shortage, temporary hires will be permitted in non-hazardous auxiliary roles regardless of age or prior experience. This classification is non-negotiable and should not be discussed outside company property.\n\nReport all disruptions to Office 4C.\n\n-H.S.",
+        "description": "Scarlet Mining Co. --- Internal Correspondence                                   To: All Supervisors                                                              Date: July 18, 1995                                                              Subject: Productivity Quotas\n\nEffective immediately, daily extraction quotas will increase across Sectors 2-6.\n\nWorkers expressing 'concerns' about fatigue or safety procedures are to be documented and reassigned as needed.\n\nAdditionally, due to a labor shortage, temporary hires will be permitted in non-hazardous auxiliary roles regardless of age or prior experience. This classification is non-negotiable and should not be discussed outside company property.\n\nReport all disruptions to Office 4C.\n\n-H.S.",
         "addDescription": "With the rat gone, you reach down and pick up the note.",
         "useDescription": "You cannot use this item."
     },
     "LIV-N-003-01": {
         "item_name": "Newspaper Clipping",
         "essential": true,
-        "description": "THIRTEEN DEAD IN MINE COLLAPSE --- COMPANY CALLS IT 'UNFORESEEABLE'              Rockford County Herald --- August 22, 1974\n\nA partial collapse in the Scarlet Mining Co. shaft system left thirteen confirmed dead, including multiple 'auxiliary assistants,' a term the company declined to clarify.\n\nRepresentatives denied allegations of unsafe conditions and insisted the collapse was caused by an 'unpredictable geological shift.'\n\nGrieving families gathered outside the mine entrance demanding answers. Some claim the company is withholding information about the cause.\n\nScarlet Mining Co. has promised a full investigation.\n\nNo timeline has been provided.",
+        "description": "THIRTEEN DEAD IN MINE COLLAPSE --- COMPANY CALLS IT 'UNFORESEEABLE'              Rockford County Herald --- August 22, 1995\n\nA partial collapse in the Scarlet Mining Co. shaft system left thirteen confirmed dead, including multiple 'auxiliary assistants,' a term the company declined to clarify.\n\nRepresentatives denied allegations of unsafe conditions and insisted the collapse was caused by an 'unpredictable geological shift.'\n\nGrieving families gathered outside the mine entrance demanding answers. Some claim the company is withholding information about the cause.\n\nScarlet Mining Co. has promised a full investigation.\n\nNo timeline has been provided.",
         "addDescription": "You picked up the newspaper.",
         "useDescription": "You cannot use this item."
     },
