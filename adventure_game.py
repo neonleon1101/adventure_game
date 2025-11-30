@@ -525,7 +525,7 @@ def check_ifEvent():
         return
 #^^^^^^^^^^^^^^^^^^^^^^
 
-# commitable change lol
+
 
 #----------------------
 #  INVENTORY FUNCTIONS

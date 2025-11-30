@@ -103,5 +103,12 @@
         "description": "A neatly made peanut butter and jelly sandwich... the bread soft, the peanut butter smooth, and the grape jelly giving off a faint, sweet scent.",
         "addDescription": "You carefully spread the peanut butter and grape jelly onto the slices of bread and press them together, forming a simple but satisfying peanut butter and jelly sandwich.",
         "useDescription": "You make a peanut butter and jelly sandwich."
+    },
+    "UTC-T-PTB-01": {
+        "item_name": "Pristine Trowel",
+        "essential": true,
+        "description": "An ornate little gardening trowel with a smooth, carved wooden handle and a sharp metal scoop that gleams despite its surroundings. For an object left in an abandoned greenhouse, it appears remarkably well-kept... sharp, polished, and pristine, as though someone took great care to preserve it. An echo of a voice in your head urges you to use it, as if the world will end if you don't.",
+        "addDescription": "You take the trowel from the table. It would be rather difficult to dig without it.",
+        "useDescription": "You slay the dirt."
     }
 }

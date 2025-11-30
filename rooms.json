@@ -270,8 +270,8 @@
     },
     "greenhouse": {
         "room_code": "GHS",
-        "description": "you are in the greenhouse",
-        "returnDesc": "you are back in the greenhouse",
+        "description": "Stepping into the greenhouse, you're met with a heavy wave of warm, humid air... thick with the scent of damp soil and long-neglected plants. Grimy glass panes arch overhead, filtering the rain into soft, muted streaks of light that fall across several large planter boxes arranged throughout the room. Most of the vegetation has collapsed into brittle stems, leaving dark soil exposed in uneven mounds. In the corner, a crooked utility closet hangs half-open, its interior barely visible.\n\nAs you take another step, a sudden coolness slips across the back of your neck---unnatural in the greenhouse's heat---and the air stirs with a faint rustle of dead leaves. For a moment, you feel as though someone is passing behind you. Then a whisper drifts through the space, soft as breath against glass:\n\n'What's forgotten settles deep... where the oldest roots cling to memory.'\n\nThe sound fades, and the greenhouse returns to stillness... except for one detail you didn't notice before. In the central planter box, the soil forms a slightly raised, uneven patch, its surface subtly smoother than the rest, as though something had once been buried there... and recently covered again.",
+        "returnDesc": "The greenhouse stands quiet and still, warm air heavy with the scent of damp soil while rain patters softly against the grimy glass panes above.",
         "choices": {
             "1": {
                 "Search the utility closet": "utility_closet",
@@ -287,12 +287,21 @@
             }
         }
     },
+    "planter_box": {
+
+    },
     "utility_closet": {
         "room_code": "UTC",
-        "description": "you are in the utility closet",
-        "returnDesc": "you are back in the utility closet",
+        "description": "The interior of the closet is almost entirely bare. The air is stale and musty and the floor and walls are painted in a fine layer of dust. The only furniture of note is a plain wooden table. Perched on that table is a pristine trowel.\n\nThe trowel is your implement. You'll need it if you want to do this right.",
+        "returnDesc": "The utility closet remains just as you left it... cluttered with rusted tools.",
         "choices": {
             "1": {
+                "Take the trowel": "UTC-T-PTB-01",
+                "once": true,
+                "nav" : false,
+                "item": true
+            },
+            "2": {
                 "Return to the greenhouse": "greenhouse",
                 "once": false,
                 "nav" : true,
