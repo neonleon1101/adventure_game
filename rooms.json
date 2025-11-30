@@ -70,7 +70,7 @@
     },
     "parlor": {
         "room_code": "PAR",
-        "description": "Stepping through the open doorway, you find yourself in a parlor frozen somewhere between elegance and decay. The air is stale, carrying the faint scent of old perfume and dust. A round table commands the center of the room, draped in a faded lace runner and surrounded by mismatched chairs with sunken cushions. On its surface rests a torn page---ripped cleanly from a larger book or diary---with a large brass key placed neatly on top, catching the candlelight in a muted glint. Heavy curtains frame tall windows while the warm glow of candles and wall sconces washes over the scattered furnishings: an ornate settee, a pair of armchairs, and a cracked side cabinet leaning slightly under its own weight. The open doorway behind you offers a clear view back into the foyer, reminding you how close you remain to where you first stepped inside.",
+        "description": "Stepping through the open doorway, you find yourself in a parlor frozen somewhere between elegance and decay. The air is stale, carrying the faint scent of old perfume and dust. A round table commands the center of the room, draped in a faded lace runner and surrounded by mismatched chairs with sunken cushions. On its surface rests a torn page---ripped cleanly from a larger book or diary---with a brass key topped with a rounded, clover-shaped club symbol placed neatly on top, catching the candlelight in a muted glint. Heavy curtains frame tall windows while the warm glow of candles and wall sconces washes over the scattered furnishings: an ornate settee, a pair of armchairs, and a cracked side cabinet leaning slightly under its own weight. The open doorway behind you offers a clear view back into the foyer, reminding you how close you remain to where you first stepped inside.",
         "returnDesc": "The parlor looks much as it did before... the warm candlelight, the sagging furniture, and the round table at the center giving the room its quiet, faded charm. The open doorway still offers a clear view back into the foyer.",
         "choices": {
             "1": {
@@ -80,13 +80,13 @@
                 "item": false
             },
             "2": {
-                "Pick up the key": "PTB-T-LBD-01",
+                "Pick up the club key": "PAR-T-LBD-01",
                 "once": true,
                 "nav" : false,
                 "item": true
             },
             "3": {
-                "Pick up the note": "PTB-N-001-02",
+                "Pick up the note": "PAR-N-001-02",
                 "once": true,
                 "nav" : false,
                 "item": true

@@ -1,19 +1,26 @@
 {
-    "PTB-T-LBD-01": {
-        "item_name": "Brass Key",
+    "PAR-T-LBD-01": {
+        "item_name": "Club Key",
         "essential": true,
-        "description": "A heavy brass key, worn smooth along the edges. Its ornate bow curls into an old-fashioned design, and faint scratches suggest it's been used many times before.",
-        "addDescription": "You picked up the key.",
+        "description": "A sturdy brass key with a rounded head shaped like a clover-like club symbol, its edges worn smooth from years of handling. The metal has a comforting weight to it, and faint tarnish lines trace the grooves of the simple, elegant design.",
+        "addDescription": "You picked up the club key.",
         "useDescription": "You used the key"
     },
     "LIV-T-LBD-02": {
-        "item_name": "Brass Key 2",
+        "item_name": "Diamond Key",
         "essential": true,
-        "description": "A heavy brass key, worn smooth along the edges. Its ornate bow curls into an old-fashioned design, and faint scratches suggest it's been used many times before.",
-        "addDescription": "You picked up the key.",
+        "description": "A polished brass key with a diamond-shaped head, its clean angles catching light in sharp reflections. The face of the diamond is slightly raised, as though the design was stamped with deliberate care, giving the key a refined, almost regal presence.",
+        "addDescription": "You picked up the diamond key.",
         "useDescription": "You used the key"
     },
-    "PTB-N-001-02": {
+    "SFE-T-LBD-01": {
+        "item_name": "Spade Key",
+        "essential": true,
+        "description": "A long brass key with a pointed spade-shaped head, the narrow tip giving it a sharp, almost ceremonial look. The engraving is crisp despite the key's age, and the darkened metal suggests it once held particular importance.",
+        "addDescription": "You picked up the spade key.",
+        "useDescription": "You used the key"
+    },
+    "PAR-N-001-02": {
         "item_name": "Torn Diary Entry",
         "essential": true,
         "description": "Dated: March 3, 1995\n\n\n\nI heard the sirens again today.\n\nHarold dismisses it as 'routine checks,' but he forgets I grew up around the mines. I know the sound of panic when I hear it. The men look tired... leaner every week, like they're working double shifts. Maybe they are. Harold never talks about the mine anymore. Every attempt I make leads to an argument.\n\nI don't know what he's hiding, but whatever it is... it's getting worse.\n\nHe used to be a kinder man.\n\n\n\nI pray he finds his way back.",
@@ -32,6 +39,27 @@
         "essential": true,
         "description": "THIRTEEN DEAD IN MINE COLLAPSE --- COMPANY CALLS IT 'UNFORESEEABLE'              Rockford County Herald --- August 22, 1995\n\nA partial collapse in the Scarlet Mining Co. shaft system left thirteen confirmed dead, including multiple 'auxiliary assistants,' a term the company declined to clarify.\n\nRepresentatives denied allegations of unsafe conditions and insisted the collapse was caused by an 'unpredictable geological shift.'\n\nGrieving families gathered outside the mine entrance demanding answers. Some claim the company is withholding information about the cause.\n\nScarlet Mining Co. has promised a full investigation.\n\nNo timeline has been provided.",
         "addDescription": "You picked up the newspaper.",
+        "useDescription": "You cannot use this item."
+    },
+    "BTH-N-004-01": {
+        "item_name": "Personal Letter",
+        "essential": true,
+        "description": "My dear Clara,\n\n\n\nI don't know whom to turn to anymore.\n\nThe men from the mine---those poor boys---haunt my sleep. Harold says I should stop 'meddling,' but how can I be silent when I know? When I've seen their faces? When I've heard what they make the children do?\n\nVivian left not long after the collapse. She said she couldn't bear to stay in this house another day... said the walls felt built on suffering, and she would not be part of whatever Harold was trying to hide. I wanted to go with her, but she insisted I stay, said someone needed to stand up to him. I fear she saw a darkness in him that even I refused to acknowledge.\n\nIf the truth comes out, the Scarlet name will be ruined forever. Maybe it should be.\n\nTonight I'm going to speak with him again. I'm frightened, but this has gone on too long. He must understand that this cannot continue. I pray he listens.\n\nIf he doesn't... I don't know what comes next.\n\n\n\n-Eleanor",
+        "addDescription": "You picked up note.",
+        "useDescription": "You cannot use this item."
+    },
+    "ATC-N-005-01": {
+        "item_name": "Email Printout",
+        "essential": true,
+        "description": "Email Dated: September 9, 1995                                                   Subject: Regarding the Investigation\n\n\n\nHarold,\n\n\n\nThe board has agreed to support your request for a private geological report. If the external review indicates structural negligence, we will not be able to suppress it. You understand what that means.\n\nI strongly advise maintaining a firm, consistent narrative about the 'unforeseeable' cause. Any suggestion of overworking, underage labor, or unreported safety failures will expose the company to enormous liability.\n\nIf Eleanor continues contacting families, you must ensure she does not complicate matters further. Her involvement is... unwise.\n\nWe need stability right now.\n\n\n\n-Fletcher Ward, Esq.                                                             Scarlet Mining Co. Legal Counsel",
+        "addDescription": "You picked up note.",
+        "useDescription": "You cannot use this item."
+    },
+    "SFE-N-006-02": {
+        "item_name": "Journal Page",
+        "essential": true,
+        "description": "Dated: October 2, 1995\n\n\n\nShe wouldn't stop.\n\nShe wouldn't stop.\n\nI told her the mine would survive if she just kept quiet. That it was almost fixed. That we could rebuild.\n\n\n\nBut she called me a murderer.\n\n\n\nSaid the children were on my hands.\n\nSaid she would go to the press.\n\nSaid she didn't care what happened to us.\n\nShe forced my hand.\n\n\n\nI loved her. God help me.\n\n\n\nThere's no going back now.",
+        "addDescription": "You picked up the note.",
         "useDescription": "You cannot use this item."
     },
     "FRD-T-XXX-01": {
