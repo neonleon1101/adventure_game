@@ -519,7 +519,13 @@ def check_ifEvent():
         if check_hasItem("XXX-T-RAT-01"):
             event_lureRat()
             return
-        else:
+    elif current_room == "greenhouse":
+        if check_hasItem("UTC-T-PTB-01"):
+            event_digHole()
+            return
+    elif current_room == "planter_box":
+        if check_hasItem("PLB-T-LBD-02"):
+            event_digHoleReturn()
             return
     else:
         return
@@ -572,7 +578,7 @@ def removeItem(user_input: str):
             print("Remove canceled")
             time.sleep(1)
     elif check_essential(item) == True:
-        msg = "You cannot remove this item"
+        msg = "You cannot remove this item."
         slowReader(msg, False)
         time.sleep(1)
         return
@@ -750,6 +756,26 @@ def event_lureRat():
     current_room = "kitchen"
     return
 
+# Digging up the key in the garden
+def event_digHole():
+    global roomContents, current_room
+    choices = roomContents[current_room]['choices']
+    choices["3"] = {
+            "Dig in the strange spot": "planter_box",
+            "once": False,
+            "nav": True,
+            "item": False
+        }
+    return
+    
+# Gets the player out of planter_box room and removes the pristine trowel item and the dig option
+def event_digHoleReturn():
+    global current_room, roomContents
+    current_room = "greenhouse"
+    inv_items.remove("UTC-T-PTB-01")
+    choices = roomContents[current_room]['choices']
+    del choices['3']
+    return
 #^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -799,7 +825,7 @@ while run:
         os.system('cls')
         show_pauseMenu()
 
-        user_input = input('> ')
+        user_input = input('> ').strip()
 
         if user_input == '1':
             pauseMenu = False
@@ -819,6 +845,11 @@ while run:
                 pass
             else:
                 break
+            current_room = "exterior"
+            inv_items = []
+            inv_notes = [None, None, None, None, None, None]
+            rooms_explored = []
+            removed_choices = {}
             pauseMenu = False
             mainMenu = True
         elif user_input == '4':

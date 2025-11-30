@@ -164,7 +164,7 @@
     },
     "kitchen": {
         "room_code": "KIT",
-        "description": "Stepping into the kitchen, you're met with the mix of worn tile floors and warm candlelight drifting in from the dining room. An old refrigerator stands against the far wall, its enamel chipped and humming faintly with age. A narrow door hangs slightly ajar, revealing the edge of a pantry beyond, while a heavier exterior door on the opposite wall leads out toward the greenhouse or garden, carrying a faint earthy scent through its cracks. In the center of the room sits a wooden island, and perched atop it is the same rat you saw moments ago... now staring directly at you. With deliberate intention, it grabs a crumpled piece of paper from the countertop, hops down to the floor, and scurries toward a small hole at the base of the wall. Near the hole's entrance, the tile is smeared with faded streaks of peanut butter and jelly, a clear indication of the creature's favorite meal. Just before vanishing inside, the rat pauses, peeks out at you with the note still in its mouth, and slowly retreats, as if urging you to follow.",
+        "description": "Stepping into the kitchen, you're met with the mix of worn tile floors and warm candlelight drifting in from the dining room. An old refrigerator stands against the far wall, its enamel chipped and humming faintly with age. A narrow door hangs slightly ajar, revealing the edge of a pantry beyond, while a heavier exterior door on the opposite wall leads out toward the greenhouse or garden, carrying a faint earthy scent through its cracks. In the center of the room sits a wooden island, and perched atop it is the same rat you saw in the dining room... now staring directly at you. With deliberate intention, it grabs a crumpled piece of paper from the countertop, hops down to the floor, and scurries toward a small hole at the base of the wall. Near the hole's entrance, the tile is smeared with faded streaks of peanut butter and jelly, a clear indication of the creature's favorite meal. Just before vanishing inside, the rat pauses, peeks out at you with the note still in its mouth, and slowly retreats, as if urging you to follow.",
         "returnDesc": "The kitchen feels much the same as before, the worn tiles and old refrigerator giving it a tired stillness. Near the wall, the rat's hole, and the faint smears of peanut butter and jelly remain just as you remember them.",
         "choices": {
             "1": {
@@ -288,7 +288,17 @@
         }
     },
     "planter_box": {
-
+        "room_code": "PLB",
+        "description": "You press the pristine trowel into the raised patch of soil, its ornate handle fitting comfortably in your grip as the metal slips easily beneath the surface. The dirt parts with surprising softness, as though it's been disturbed not long ago. With a few careful scoops, the trowel strikes something solid... wood, faintly hollow-sounding under the blade. Brushing the soil aside, you reveal a small wooden box, its surface worn smooth and stained dark with age. The lid lifts with a reluctant creak, and inside, nestled against faded cloth, rests a brass key topped with a sharp, gleaming diamond-shaped head. As you loosen your grip on the trowel, it slips from your hand... yet before it touches the floor, it simply vanishes, leaving only the faint, uncanny sense, that it landed somewhere very... very far away.",
+        "returnDesc": "",
+        "choices": {
+            "1": {
+                "Take the diamond key": "PLB-T-LBD-02",
+                "once": true,
+                "nav" : false,
+                "item": true
+            }
+        }
     },
     "utility_closet": {
         "room_code": "UTC",
@@ -296,16 +306,16 @@
         "returnDesc": "The utility closet remains just as you left it... cluttered with rusted tools.",
         "choices": {
             "1": {
-                "Take the trowel": "UTC-T-PTB-01",
-                "once": true,
-                "nav" : false,
-                "item": true
-            },
-            "2": {
                 "Return to the greenhouse": "greenhouse",
                 "once": false,
                 "nav" : true,
                 "item": false
+            },
+            "2": {
+                "Take the trowel": "UTC-T-PTB-01",
+                "once": true,
+                "nav" : false,
+                "item": true
             }
         }
     },
