@@ -43,13 +43,13 @@
         "returnDesc": "The foyer greets you with its warm candlelight and towering symmetry, the chandelier still burning steadily overhead. The grand staircases and shadowed hallway seem no less imposing now that you've stood here before.",
         "choices": {
             "1": {
-                "Investigate the room to the right": "parlor",
+                "Approach the door to the left": "library_door",
                 "once": false,
                 "nav" : true,
                 "item": false
             }, 
             "2": {
-                "Approach the door to the left": "library_door",
+                "Investigate the room to the right": "parlor",
                 "once": false,
                 "nav" : true,
                 "item": false
@@ -321,8 +321,8 @@
     },
     "mezzanine": {
         "room_code": "MEZ",
-        "description": "you are standing on the mezzanine looking down at the foyer, there are 4 doors that line the upstairs hallway",
-        "returnDesc": "you are back on the mezzanine",
+        "description": "Walking up the stairs and stepping out onto the center of the mezzanine, you find yourself looking down over the grand foyer from a new vantage point. The chandelier hangs closer now, its many candles flickering in a delicate, wavering constellation above the open space below. From up here, the sweeping symmetry of the foyer is easier to appreciate... the twin staircases curling gracefully into one another, the tall portrait frames lining the walls, and the heavy front door sitting motionless beneath you. The long hallway stretches out behind you, running east to west with four closed doors set evenly along the northern wall, each one distinct in its own quiet way.\n\nThe left-most door is broad and sturdier than the others, its frame subtly more ornate... as if someone of importance once slept beyond it. The second door has a faint, lingering scent of dust and fabric drifting from its seams. The third door carries the slightest echo of tile beneath it, a coolness you can feel even from here. And the fourth door, though plain, seems to hum faintly with the restless stillness of a room that hasn't been opened in years.\n\nA glance upward reveals another detail: centered above the mezzanine ceiling is a closed drop-down attic ladder, its wooden frame tightly shut and far out of reach. The sight of it sends a mild shiver down the back of your neck... a reminder that, even here, the house has spaces not yet willing to meet you.",
+        "returnDesc": "The mezzanine feels just as you left it, offering a clear view of the grand foyer below and the soft glow of the chandelier drifting upward in warm, steady light.",
         "choices": {
             "1": {
                 "Go through door number 1": "master_bedroom",
@@ -331,7 +331,7 @@
                 "item": false
             },
             "2": {
-                "Go through door number 2": "bedroom_one",
+                "Go through door number 2": "kids_room",
                 "once": false,
                 "nav" : true,
                 "item": false
@@ -343,7 +343,7 @@
                 "item": false
             },
             "4": {
-                "Go through door number 4": "bedroom_two",
+                "Go through door number 4": "guest_room",
                 "once": false,
                 "nav" : true,
                 "item": false
@@ -358,78 +358,65 @@
     },
     "bathroom": {
         "room_code": "BTH",
-        "description": "you walk into a bathroom",
-        "returnDesc": "you are back in the bathroom",
+        "description": "Stepping through the door into a bathroom, you're met with the cool scent of tile and old porcelain, the candlelight reflecting off the glossy surfaces in soft, uneven patches. The room itself is tidy but long unused... dust clinging to the corners of the mirror and faint mineral stains shadowing the edges of the sink. On the countertop sits a peculiar ring stand shaped like an open hand, each of its five sculpted fingers meant to hold a ring. Four of them are adorned with tarnished bands, but the center finger stands bare, as though something important once rested there. The stand's base is unusually large and heavy, carved with faint decorative grooves, and it appears to conceal a small drawer... yet no latch, handle, or seam offers any hint on how it might be opened. The stillness of the room makes the absence of the missing ring feel strangely deliberate.",
+        "returnDesc": "The bathroom is just as quiet as before, its cool tiles and faintly dusty fixtures reflecting the soft candlelight in muted patches.",
         "choices": {
             "1": {
-                "Go back to the mezzanine": "mezzanine",
+                "Leave the bathroom": "mezzanine",
                 "once": false,
                 "nav" : true,
                 "item": false
             }
         }
     },
-    "bedroom_one": {
-        "room_code": "BR1",
-        "description": "you walk into a bedroom (1)",
-        "returnDesc": "you are back in the bedroom",
+    "kids_room": {
+        "room_code": "KID",
+        "description": "Stepping through the door, you're met with a gentle hush, as though the air itself has been holding its breath for years. Faded floral wallpaper curls at the edges, and a small wooden desk sits beneath the window, still scattered with remnants of another life... an old journal with brittle pages, a dried fountain pen, and a cracked ceramic trinket that might once have held sentimental value. Along one wall, a narrow bookshelf leans under the weight of well-worn novels and a row of framed photographs. It takes only a moment for recognition to settle in... this room once belonged to your mother. The space feels paused in time, as though she left in a hurry and never dared to come back, yet her presence lingers in every corner.",
+        "returnDesc": "The room is just as you left it... quiet, still, and filled with the lingering traces of the life your mother once lived here.",
         "choices": {
             "1": {
-                "Investigate the closet": "closet_one",
+                "Open the closet doors": "kids_closet",
                 "once": false,
                 "nav" : true,
                 "item": false
             },
             "2": {
-                "Go back to the mezzanine": "mezzanine",
+                "Leave the bedroom": "mezzanine",
                 "once": false,
                 "nav" : true,
                 "item": false
             }
         }
     },
-    "closet_one": {
-        "room_code": "CL1",
-        "description": "you walk into a closet (1)",
-        "returnDesc": "you are back in the closet",
+    "kids_closet": {
+        "room_code": "KDC",
+        "description": "You open the doors to the closet",
+        "returnDesc": "You open the doors to the closet again",
         "choices": {
             "1": {
-                "Leave the closet": "bedroom_one",
+                "Close the closet doors": "kids_room",
                 "once": false,
                 "nav" : true,
                 "item": false
             }
         }
     },
-    "bedroom_two": {
-        "room_code": "BR2",
-        "description": "you walk into a bedroom (2)",
-        "returnDesc": "you are back in the bedroom",
+    "guest_room": {
+        "room_code": "GST",
+        "description": "you walk into a guest bedroom filled with old junk including a long, wooden broom.",
+        "returnDesc": "you are back in the guest bedroom",
         "choices": {
             "1": {
-                "Investigate the closet": "closet_two",
+                "Leave the guest bedroom": "mezzanine",
                 "once": false,
                 "nav" : true,
                 "item": false
             },
             "2": {
-                "Go back to the mezzanine": "mezzanine",
-                "once": false,
-                "nav" : true,
-                "item": false
-            }
-        }
-    },
-    "closet_two": {
-        "room_code": "CL2",
-        "description": "you walk into a closet (2)",
-        "returnDesc": "you are back in the closet",
-        "choices": {
-            "1": {
-                "Leave the closet": "bedroom_two",
-                "once": false,
-                "nav" : true,
-                "item": false
+                "Take the wooden broom": "GST-T-ATD-01",
+                "once": true,
+                "nav" : false,
+                "item": true
             }
         }
     },
@@ -445,25 +432,19 @@
                 "item": false
             },
             "2": {
-                "Investigate the bathroom": "master_bathroom",
-                "once": false,
-                "nav" : true,
-                "item": false
-            },
-            "3": {
                 "Investigate the closet": "master_closet",
                 "once": false,
                 "nav" : true,
                 "item": false
             },
-            "4": {
-                "Open the safe": "nah fam that shit locked af",
-                "once": true,
+            "3": {
+                "Open the safe": "nah fam that shit locked lmfao",
+                "once": false,
                 "nav" : false,
                 "item": false
             },
-            "5": {
-                "Go back to the mezzanine": "mezzanine",
+            "4": {
+                "Leave the master bedroom": "mezzanine",
                 "once": false,
                 "nav" : true,
                 "item": false
@@ -477,19 +458,6 @@
         "choices": {
             "1": {
                 "Leave the bathroom": "master_bedroom",
-                "once": false,
-                "nav" : true,
-                "item": false
-            }
-        }
-    },
-    "master_closet": {
-        "room_code": "MCL",
-        "description": "you walk into the master bedroom's walk-in closet",
-        "returnDesc": "you are back in the master closet",
-        "choices": {
-            "1": {
-                "Leave the closet": "master_bedroom",
                 "once": false,
                 "nav" : true,
                 "item": false
@@ -515,13 +483,27 @@
             }
         }
     },
-    "library_door": {
-        "room_code": "LBD",
-        "description": "It's a big ass locked door, and I haven't coded this part yet so you can't open it, sorry go away lmao.",
-        "returnDesc" : "Believe it or not, the door is still locked.",
+    "attic": {
+        "room_code": "ATC",
+        "description": "u in da adic",
+        "returnDesc": "u bak in da adic",
         "choices": {
             "1": {
-                "Turn yo dumbass around" : "foyer",
+                "Go back down the ladder onto the mezzanine": "mezzanine",
+                "once": false,
+                "nav" : true,
+                "item": false
+            }
+        }
+
+    },
+    "library_door": {
+        "room_code": "LBD",
+        "description": "You move toward the tall, imposing door that stands shut along the foyer wall, its presence far heavier than you first realized. Up close, the wood reveals itself to be thick and tightly grained, reinforced with iron bands that run across its surface like ribs. Heavy chains have been drawn over the door in a tight lattice, secured by three distinct brass padlocks, each shaped like a card suit... one a pointed spade, another a rounded club, and the last a sharp-edged diamond. The locks hang motionless in the candlelight, giving the unmistakable impression that whatever lies beyond this door was meant to remain sealed.",
+        "returnDesc" : "The tall, imposing door stands just as before, its heavy frame looming silently along the foyer wall.",
+        "choices": {
+            "1": {
+                "Turn back into the foyer" : "foyer",
                 "once": false,
                 "nav" : true,
                 "item": false

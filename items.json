@@ -110,5 +110,12 @@
         "description": "An ornate little gardening trowel with a smooth, carved wooden handle and a sharp metal scoop that gleams despite its surroundings. For an object left in an abandoned greenhouse, it appears remarkably well-kept... sharp, polished, and pristine, as though someone took great care to preserve it. An echo of a voice in your head urges you to use it, as if the world will end if you don't.",
         "addDescription": "You take the trowel from the table. It would be rather difficult to dig without it.",
         "useDescription": "You slay the dirt."
+    },
+    "GST-T-ATD-01": {
+        "item_name": "Wooden Broom",
+        "essential": false,
+        "description": "A simple wooden broom, could be useful for reaching something high-up.",
+        "addDescription": "You picked up the wooden broom.",
+        "useDescription": "You poke the attic door with the broom and the ladder falls in front of your feet."
     }
 }
