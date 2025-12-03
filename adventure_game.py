@@ -436,6 +436,16 @@ def check_explored(room_key: str) -> bool: # Read as "has [room_key] been explor
     else:
         return True   # <= Return to room
 
+# Check if the choice is in removed_choices
+def check_removed(room_key: str, choice: str) -> bool:
+    global removed_choices
+
+    if room_key in removed_choices:
+        if choice in removed_choices[room_key]:
+            return True
+    else:
+        return False
+
 # Check if the choice is avalaible more than once or not (returns bool)
 def check_once(room_key: str, user_input: str) -> bool:
     global roomContents
@@ -529,9 +539,13 @@ def check_ifEvent():
         if check_hasItem("PLB-T-LBD-02"):
             event_digHoleReturn()
             return
-    elif "KDC-T-XXX-01" in inv_items:
-        if not check_hasItem("KDC-T-BTH-02"):
-            event_findRing()
+    elif check_removed('kids_closet', '2'): 
+        if not check_removed('kids_closet', '3'): 
+            if not check_hasItem("KDC-T-BTH-02"):
+                event_findRing()
+                return
+        elif check_hasItem("KDC-T-BTH-02"):
+            event_ringStand()
             return
     else:
         return
@@ -789,6 +803,18 @@ def event_findRing():
     choices = roomContents['kids_closet']['choices']
     choices["3"] = {
         "Pick up the ring": "KDC-T-BTH-02",
+        "once": True,
+        "nav": False,
+        "item": True
+    }
+    return
+
+# Adds the option to interact with the ring stand if the player has picked up the silver ring
+def event_ringStand():
+    global roomContents
+    choices = roomContents['bathroom']['choices']
+    choices["2"] = {
+        "Place the ring on the ring stand": "KDC-T-BTH-02",
         "once": True,
         "nav": False,
         "item": True
