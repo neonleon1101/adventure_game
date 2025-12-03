@@ -558,7 +558,14 @@ def check_ifEvent():
             event_addBathroomNote()
     
     # Poking the attic door with the broom to get the ladder to drop down
-    
+    if check_removed("spare_room", "2"):
+        if check_hasItem("SPR-T-MEZ-01"):
+            if not check_removed("mezzanine", "7"):
+                event_addUseBroom()
+        if not check_hasItem("SPR-T-MEZ-01"):
+            event_removeUseBroom()
+    if check_removed("mezzanine", "7"):
+        event_addAtticLadder()
 
     return
 #^^^^^^^^^^^^^^^^^^^^^^
@@ -838,6 +845,7 @@ def event_removeRingStand():
     global roomContents
     choices = roomContents['bathroom']['choices']
     del choices["2"]
+    return
 
 # Adds the fourth note to the bathroom after player places ring on ring stand
 def event_addBathroomNote():
@@ -849,6 +857,37 @@ def event_addBathroomNote():
         "nav": False,
         "item": True
     }
+
+# Adds the option to use the broom to drop down the attic ladder
+def event_addUseBroom():
+    global roomContents
+    choices = roomContents['mezzanine']['choices']
+    choices["7"] = {
+        "Use the broom to open the attic door": "You grip the wooden broom and raise it toward the ceiling, tapping the spot where the attic ladder is folded and recessed. The first few hits produce only a hollow thud, dust drifting down in lazy spirals. Then, with a firmer strike, something clicks. A sudden creak echoes overhead as the panel shifts, and the drop-down ladder unfolds with a sharp, rattling snap, descending until it settles firmly on the floor. The opening above yawns dark and silent, inviting you upward.",
+        "once": True,
+        "nav": False,
+        "item": False
+    }
+    return
+
+# Removes the option to use the broom to drop down the attic ladder
+def event_removeUseBroom():
+    global roomContents
+    choices = roomContents['mezzanine']['choices']
+    del choices["7"]
+    return
+
+# Adds the option to climb up the ladder into the attic
+def event_addAtticLadder():
+    global roomContents
+    choices = roomContents['mezzanine']['choices']
+    choices["6"] = {
+        "Climb up the ladder into the attic": "attic",
+        "once": False,
+        "nav": True,
+        "item": False
+    }
+    return
 #^^^^^^^^^^^^^^^^^^^^^^
 
 

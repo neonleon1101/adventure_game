@@ -438,27 +438,27 @@
         "returnDesc": "you are back in the master bedroom",
         "choices": {
             "1": {
-                "Investigate the balcony": "balcony",
+                "Leave the master bedroom": "mezzanine",
                 "once": false,
                 "nav" : true,
                 "item": false
             },
             "2": {
-                "Investigate the closet": "master_closet",
+                "Investigate the balcony": "balcony",
                 "once": false,
                 "nav" : true,
                 "item": false
             },
             "3": {
-                "Open the safe": "nah fam that shit locked lmfao",
+                "Investigate the closet": "master_closet",
                 "once": false,
-                "nav" : false,
+                "nav" : true,
                 "item": false
             },
             "4": {
-                "Leave the master bedroom": "mezzanine",
+                "Open the safe": "nah fam that shit locked lmfao",
                 "once": false,
-                "nav" : true,
+                "nav" : false,
                 "item": false
             }
         }
@@ -497,14 +497,20 @@
     },
     "attic": {
         "room_code": "ATC",
-        "description": "u in da adic",
-        "returnDesc": "u bak in da adic",
+        "description": "You climb the ladder into the attic, pulling yourself up into a dim, dust-filled space that smells faintly of old paper and insulation. Rows of filing cabinets stretch along the walls, their drawers packed tight with documents that haven't seen daylight in decades. Boxes of every size are stacked in precarious towers, some leaning at uneasy angles as though the slightest disturbance might send them toppling. As you take your first careful steps forward, one of the stacks shudders, then collapses with a soft crash... papers rustling as they spill across the floor. Amid the scattered mess, a single document slides out from the chaos and comes to rest neatly at your feet, as if choosing to be found.",
+        "returnDesc": "The attic remains cluttered and still, the towers of boxes and old filing cabinets standing in their dusty, overstuffed silence.",
         "choices": {
             "1": {
                 "Go back down the ladder onto the mezzanine": "mezzanine",
                 "once": false,
                 "nav" : true,
                 "item": false
+            },
+            "2": {
+                "Pick up the document": "ATC-N-005-01",
+                "once": true,
+                "nav" : false,
+                "item": true
             }
         }
 
