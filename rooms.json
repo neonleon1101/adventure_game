@@ -80,7 +80,7 @@
                 "item": false
             },
             "2": {
-                "Pick up the club key": "PAR-T-LBD-01",
+                "Take the club key": "PAR-T-LBD-01",
                 "once": true,
                 "nav" : false,
                 "item": true
@@ -456,12 +456,37 @@
                 "item": false
             },
             "4": {
-                "Approach the safe": "nah fam that shit locked lmfao",
+                "Approach the safe": "master_safe",
                 "once": false,
-                "nav" : false,
+                "nav" : true,
                 "item": false
             }
         }
+    },
+    "master_safe": {
+        "room_code": "SFE",
+        "description": "You kneel beside the safe tucked beneath the worn side of the bed, the metal cool beneath your hand and marked with faint scuffs from years of quiet use. The combination dial turns with a soft, deliberate click, each number falling into place as if waiting for the correct touch. As you study the face of it, a chill curls through the air behind you... subtle, but unmistakably present. A whisper follows, drifting past your ear like a faint echo through the walls:\n\n'Their legacy began on the day they first broke the earth...'\n\nThe sound fades instantly, leaving only the quiet hum of the room and the steady weight of the safe before you. Whatever code it requires, it's bound to the family's beginnings... and to a date already recorded somewhere within these walls.",
+        "returnDesc": "The safe sits silently beneath the bed, its cold metal surface and waiting combination dial just as you left them.",
+        "choices": {
+            "1": {
+                "Open the safe": "open_safe",
+                "once": false,
+                "nav" : true,
+                "item": false
+            },
+            "2": {
+                "Stand back up": "master_bedroom",
+                "once": false,
+                "nav" : true,
+                "item": false
+            }
+        }
+    },
+    "open_safe": {
+        "room_code": "OPS",
+        "description": "",
+        "returnDesc": "",
+        "choices": {}
     },
     "master_bathroom": {
         "room_code": "MBA",

@@ -567,6 +567,9 @@ def check_ifEvent():
     if check_removed("mezzanine", "7"):
         event_addAtticLadder()
 
+    if current_room == "open_safe":
+        event_openSafe()
+
     return
 #^^^^^^^^^^^^^^^^^^^^^^
 
@@ -887,6 +890,66 @@ def event_addAtticLadder():
         "nav": True,
         "item": False
     }
+    return
+
+# Puts the player in a mini-game loop to try and guess the combination to the master safe
+def event_openSafe():
+    global current_room
+    
+    puzzle = True
+    while puzzle:
+        os.system('cls')
+        slowReader("What's the combination? (#-#-#-#)\n\nType 'stop' to quit", True)
+        combination = input('> ').lower().strip()
+
+        if combination == '1-8-8-6':
+            os.system('cls')
+            msg = "With a final turn of the dial, the safe gives a soft mechanical click, followed by the slow, heavy swing of its door. Inside, the interior is dim but unmistakably occupied: a crumpled note lies pressed against the back wall, its edges yellowed and uneven, and beside it rests a brass key topped with a sharp, unmistakable spade-shaped head. The two items sit together as though they've been waiting... kept safe, hidden, and untouched for years until this moment."
+            slowReader(msg, True)
+            event_addSafeNote()
+            event_addSafeKey()
+            event_removeOpenSafe()
+            input("press 'enter' to continue")
+            current_room = "master_safe"
+            puzzle = False
+            break
+        elif combination == 'stop':
+            current_room = "master_safe"
+            puzzle = False
+            break
+        else:
+            print("I don't understand that command.")
+            time.sleep(2)
+
+    return
+
+# Adds the option to pick up the note from the safe to master_safe
+def event_addSafeNote():
+    global roomContents
+    choices = roomContents['master_safe']['choices']
+    choices["3"] = {
+        "Take the note from the safe": "SFE-N-006-02",
+        "once": True,
+        "nav": False,
+        "item": True
+    }
+
+# Adds the option to pick up the key from the safe to master_safe
+def event_addSafeKey():
+    global roomContents
+    choices = roomContents['master_safe']['choices']
+    choices["4"] = {
+        "Take the spade key": "SFE-T-LBD-01",
+        "once": True,
+        "nav": False,
+        "item": True
+    }
+
+# removes the option to open the safe from master_safe
+def event_removeOpenSafe():
+    global roomContents
+    choices = roomContents['master_safe']['choices']
+    del choices["1"]
     return
 #^^^^^^^^^^^^^^^^^^^^^^
 
