@@ -527,34 +527,39 @@ def check_invFull(room_key: str, user_input: str) -> bool:
 def check_ifEvent():
     global current_room
     
+    # Giving the rat a sandwich
     if current_room == "rat_hole":
         if check_hasItem("XXX-T-RAT-01"):
             event_lureRat()
     
+    # Digging up the box with a key
     if current_room == "greenhouse":
         if check_hasItem("UTC-T-PTB-01"):
             event_digHole()
-    
     if current_room == "planter_box":
         if check_hasItem("PLB-T-LBD-02"):
             event_digHoleReturn()
     
+    # Taking the doll and revealing the ring
     if check_removed('kids_closet', '2'): 
         if not check_removed('kids_closet', '3'): 
             if not check_hasItem("KDC-T-BTH-02"):
                 event_findRing()
     
+    # Placing the ring on the finger of the ring stand and getting the note
     if check_removed("kids_closet", "3"):
         if check_hasItem("KDC-T-BTH-02"):
             if not check_removed("bathroom", "2"):
                 event_addRingStand()
         if not check_hasItem("KDC-T-BTH-02"):
             event_removeRingStand()
-    
     if check_removed("bathroom", "2"):
         if not check_removed("bathroom", "3"):
             event_addBathroomNote()
     
+    # Poking the attic door with the broom to get the ladder to drop down
+    
+
     return
 #^^^^^^^^^^^^^^^^^^^^^^
 

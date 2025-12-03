@@ -343,7 +343,7 @@
                 "item": false
             },
             "4": {
-                "Go through door number 4": "guest_room",
+                "Go through door number 4": "spare_room",
                 "once": false,
                 "nav" : true,
                 "item": false
@@ -366,25 +366,6 @@
                 "once": false,
                 "nav" : true,
                 "item": false
-            }
-        }
-    },
-    "ring_stand": {
-        "room_code": "RNG",
-        "description": "You slide the silver ring onto the bare finger of the porcelain ring stand, the metal settling neatly into place among the other tarnished bands. For a moment, nothing happens... then the stand gives a soft click, subtle but unmistakable. Its wide base shifts, and a hidden drawer springs open with a small metallic snap. Inside rests a folded note, tucked carefully into the narrow compartment. You lift the silver ring back off the stand before pocketing it once more.",
-        "returnDesc": "You once again slide the silver ring onto the bare finger of the ring stand, and just as before ",
-        "choices": {
-            "1": {
-                "Leave the bathroom": "mezzanine",
-                "once": false,
-                "nav" : true,
-                "item": false
-            },
-            "2": {
-                "Take the note": "BTH-N-004-01",
-                "once": true,
-                "nav" : false,
-                "item": true
             }
         }
     },
@@ -432,19 +413,19 @@
             }
         }
     },
-    "guest_room": {
-        "room_code": "GST",
-        "description": "you walk into a guest bedroom filled with old junk including a long, wooden broom.",
-        "returnDesc": "you are back in the guest bedroom",
+    "spare_room": {
+        "room_code": "SPR",
+        "description": "Stepping through the door into a bedroom, you're greeted by the heavy scent of dust and long neglect. Sheets of yellowed tarp drape over every piece of furniture... dressers, chairs, even the bed... each one sagging under the weight of decades of undisturbed grime. The room feels hollow, abandoned long before the rest of the house began to fade, its stillness almost oppressive. Near the far wall, propped against a covered dresser, stands the only object not hidden beneath a tarp: a simple wooden broom, its handle worn smooth and its bristles stiff with age, as though waiting for a purpose long forgotten.",
+        "returnDesc": "The spare bedroom looks unchanged... quiet, dust-heavy, and filled with the same tarped furniture standing untouched beneath its long-settled stillness.",
         "choices": {
             "1": {
-                "Leave the guest bedroom": "mezzanine",
+                "Leave the spare bedroom": "mezzanine",
                 "once": false,
                 "nav" : true,
                 "item": false
             },
             "2": {
-                "Take the wooden broom": "GST-T-ATD-01",
+                "Take the wooden broom": "SPR-T-MEZ-01",
                 "once": true,
                 "nav" : false,
                 "item": true
