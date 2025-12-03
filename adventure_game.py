@@ -23,6 +23,7 @@ inv_items = []
 inv_notes = [None, None, None, None, None, None]
 rooms_explored = []
 removed_choices = {}
+playedSpookyMessage = False
 
 # Dictionary of crafting/combining recipes
 recipes = {
@@ -109,7 +110,8 @@ def saveGame():
         "inv_items": inv_items,
         "inv_notes": inv_notes,
         "rooms_explored": rooms_explored,
-        "removed_choices": removed_choices
+        "removed_choices": removed_choices,
+        "playedSpookyMessage": playedSpookyMessage
     }
     with open("./save_file.json", "w") as f:
         json.dump(save_data, f, indent=4)
@@ -125,6 +127,7 @@ def check_save_data() -> bool:
 
 # Loads relevant game data from a .txt file and continues the game from there
 def loadGame():
+    global playedSpookyMessage
     with open("./save_file.json", "r") as f:
         save_data = json.load(f)
     
@@ -134,6 +137,7 @@ def loadGame():
         load_inv_notes(save_data["inv_notes"])
         load_rooms_explored(save_data["rooms_explored"])
         load_removed_choices(save_data["removed_choices"])
+        playedSpookyMessage = save_data["playedSpookyMessage"]
     if check_save_data() == False:
         msg = "No save data found"
         slowReader(msg, False)
@@ -570,6 +574,14 @@ def check_ifEvent():
     if current_room == "open_safe":
         event_openSafe()
 
+    if not playedSpookyMessage:
+        if "PAR-T-LBD-01" in inv_items and "PLB-T-LBD-02" in inv_items and "SFE-T-LBD-01" in inv_items:
+            event_spookyMessage()
+            event_addUnlockLibrary()
+
+    if check_removed("library_door", '2'):
+        event_addOpenDoor()
+
     return
 #^^^^^^^^^^^^^^^^^^^^^^
 
@@ -906,9 +918,10 @@ def event_openSafe():
             os.system('cls')
             msg = "With a final turn of the dial, the safe gives a soft mechanical click, followed by the slow, heavy swing of its door. Inside, the interior is dim but unmistakably occupied: a crumpled note lies pressed against the back wall, its edges yellowed and uneven, and beside it rests a brass key topped with a sharp, unmistakable spade-shaped head. The two items sit together as though they've been waiting... kept safe, hidden, and untouched for years until this moment."
             slowReader(msg, True)
-            event_addSafeNote()
             event_addSafeKey()
+            event_addSafeNote()
             event_removeOpenSafe()
+            time.sleep(2)
             input("press 'enter' to continue")
             current_room = "master_safe"
             puzzle = False
@@ -927,7 +940,7 @@ def event_openSafe():
 def event_addSafeNote():
     global roomContents
     choices = roomContents['master_safe']['choices']
-    choices["3"] = {
+    choices["4"] = {
         "Take the note from the safe": "SFE-N-006-02",
         "once": True,
         "nav": False,
@@ -938,19 +951,55 @@ def event_addSafeNote():
 def event_addSafeKey():
     global roomContents
     choices = roomContents['master_safe']['choices']
-    choices["4"] = {
+    choices["3"] = {
         "Take the spade key": "SFE-T-LBD-01",
         "once": True,
         "nav": False,
         "item": True
     }
 
-# removes the option to open the safe from master_safe
+# Removes the option to open the safe from master_safe
 def event_removeOpenSafe():
     global roomContents
     choices = roomContents['master_safe']['choices']
     del choices["1"]
     return
+
+# Plays a spooky message prompting the player to go to the library whenever they pick up the last of the 3 suit keys
+def event_spookyMessage():
+    global playedSpookyMessage
+    
+    os.system('cls')
+    msg = "As your fingers close around the final key, a cold ripple sweeps through the room, stirring the air as though something unseen has drawn closer. A whisper curls past your ear... soft, deliberate, and threaded with an old, knowing certainty:\n\n'When the third finds its place, seek the room where knowledge sleeps... and the truth will wake.'\n\nThe silence that follows settles over you like a waiting gaze."
+    slowReader(msg, True)
+    playedSpookyMessage = True
+    time.sleep(2)
+    input("press 'enter' to continue")
+    return
+
+# Adds the option to unlock the library door now that the player has all of the keys
+def event_addUnlockLibrary():
+    global roomContents
+    choices = roomContents['library_door']['choices']
+    choices["2"] = {
+        "Unlock the door": "You hold the three brass keys in your hand, their weight suddenly more significant as you face the chained door. One by one, you press each key into its corresponding suit-shaped lock. The club key turns first with a gritty scrape, the diamond follows with a sharp metallic snap, and the spade unlocks last with a deep, resonant click that seems to echo through the foyer. The chains slacken and slide away from the door, collapsing to the floor in a heavy clatter. For the first time, the great door stands unbound... its secrets no longer sealed.",
+        "once": True,
+        "nav": False,
+        "item": False
+    }
+
+# Adds the option to enter the library after unlocking its door
+def event_addOpenDoor():
+    global roomContents
+    choices = roomContents['library_door']['choices']
+    choices["3"] = {
+        "Enter the room": "library",
+        "once": False,
+        "nav": True,
+        "item": False
+    }
+
+
 #^^^^^^^^^^^^^^^^^^^^^^
 
 

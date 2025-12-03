@@ -546,5 +546,86 @@
                 "item": false
             }
         }
+    },
+    "library": {
+        "room_code": "LIB",
+        "description": "Stepping into the library, you're immediately struck by the sheer vertical space... the ceiling rises far above you, disappearing into shadowed beams that make the room feel almost cathedral-like. Tall shelves stretch up the walls on either side, packed with aging books whose spines fade from deep reds to brittle browns. Between the shelves stand six pilasters---three on each side---each one crowned with a framed portrait of an old Scarlet family member. Their painted eyes watch the room with a solemn, almost judging stillness. Beneath each portrait, a small wall-mounted candle glows softly, the flames trembling just enough to make the faces above them seem to shift in the unsteady light.\n\nThe air carries the scent of old paper and cold stone, a quiet weight pressing in from all sides. Directly across from where you entered, another door breaks the far wall, its frame dark and unadorned, standing in stark contrast to the grandeur around it. For a moment, you feel as though you've stepped not just into a room, but into the collected memory of the Scarlet line... one that has been waiting, patiently, for someone to disturb its silence.",
+        "returnDesc" : "Stepping back into the library, you find the tall shelves and solemn pilasters just as before, their candlelit portraits watching in steady, unblinking silence. The vastness of the room feels no less heavy this time around.",
+        "choices": {
+            "1": {
+                "Go through the other door" : "study",
+                "once": false,
+                "nav" : true,
+                "item": false
+            },
+            "2": {
+                "Go back out into the foyer": "foyer",
+                "once": false,
+                "nav" : true,
+                "item": false
+            }
+        }
+    },
+    "study": {
+        "room_code": "STD",
+        "description": "You push open the door and step into what reveals itself to be a study... though 'overwhelmed workspace' might suit it better. The room is a whirlwind of clutter: books stacked in teetering piles, papers strewn over chairs, folders left half-open as though abandoned mid-thought. The air carries the stale scent of ink and old parchment, thick enough to feel like residue on your fingertips. At the center sits a broad wooden desk nearly swallowed by the chaos, and among the mess lies a single sheet placed prominently on top... its surface filled with frantic, looping scribbles that look intent but ultimately meaningless. Against the right wall stands a tall, plain mirror with an unusually thin frame, devoid of decoration or charm. The longer you look at it, the more it feels like it doesn't quite belong to the room---or maybe even the house---at all.",
+        "returnDesc" : "",
+        "choices": {
+            "1": {
+                "Read the note on the desk" : "I heard her again last night.\n\n\n\nThe footsteps in the west hall... soft, deliberate... exactly the way she used to walk when she didn't want to wake me. I tried to tell myself it was the house settling, but the boards creaked in the same rhythm they always did beneath her feet.\n\nI haven't stepped past the front stoop in weeks. Every time I get close, I see her silhouette in the doorway behind me. I turn, and of course nothing is there. Nothing ever is. But I can feel her. Sometimes I smell her perfume. Sometimes I hear her humming that lullaby she used to sing when she was nervous.\n\n\n\nShe wants me here.\n\nShe wants me to stay.\n\nOr she wants me to remember.\n\n\n\nI don't sleep anymore. When I close my eyes I see the shaft collapsing again, hear the screams, hear her voice above them all... accusing, pleading, echoing off the stone. I used to believe guilt was a weight a man carried inside. But this house carries it too. The walls remember. She remembers.\n\nI've thought about leaving. God knows I've tried. But every time I reach for the door, my hand shakes so violently I can't touch the knob. I know what waits for me outside. Judgment. Discovery. Her.\n\nAt least here, within these walls, I can pretend she's only a memory.\n\nA man can convince himself of many things, given enough silence.\n\nBut this house is never silent.\n\n\n\nNot anymore.",
+                "once": true,
+                "nav" : false,
+                "item": false
+            },
+            "2": {
+                "Return to the library" : "puzzle_library",
+                "once": false,
+                "nav" : true,
+                "item": false
+            }
+        }
+    },
+    "puzzle_library": {
+        "room_code": "LIP",
+        "description": "",
+        "returnDesc" : "",
+        "choices": {
+            "1": {
+                "Investigate pilaster number 1" : "pilaster_one",
+                "once": false,
+                "nav" : true,
+                "item": false
+            },
+            "2": {
+                "Investigate pilaster number 2" : "pilaster_two",
+                "once": false,
+                "nav" : true,
+                "item": false
+            },
+            "3": {
+                "Investigate pilaster number 3" : "pilaster_three",
+                "once": false,
+                "nav" : true,
+                "item": false
+            },
+            "4": {
+                "Investigate pilaster number 4" : "pilaster_four",
+                "once": false,
+                "nav" : true,
+                "item": false
+            },
+            "5": {
+                "Investigate pilaster number 5" : "pilaster_five",
+                "once": false,
+                "nav" : true,
+                "item": false
+            },
+            "6": {
+                "Investigate pilaster number 6" : "pilaster_six",
+                "once": false,
+                "nav" : true,
+                "item": false
+            }
+        }
     }
 }
