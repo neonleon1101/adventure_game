@@ -434,8 +434,8 @@
     },
     "master_bedroom": {
         "room_code": "MBR",
-        "description": "you are in the master bedroom",
-        "returnDesc": "you are back in the master bedroom",
+        "description": "You step into the large bedroom, and it doesn't take long to realize this must have been the master bedroom. A heavy quiet hangs in the air, thicker than the dust settling along the floorboards. The space is broad and well-appointed, its furniture grand but worn... an ornate dresser with dulled brass handles, a vanity whose mirror has lost its clarity, and a tall wardrobe standing sentinel in the corner. On one side of the room, a large glass door leads out onto a narrow balcony, its panes fogged with age but still offering a muted glimpse of the manor grounds. Beside the wardrobe, another door stands slightly ajar, revealing the faint tiled glimmer of a private bathroom.\n\nAt the center of the room rests a wide, elegant bed, its quilt neatly made except for one telling detail: the left side is creased and indented, as though someone slept there night after night, while the right side remains perfectly smooth, untouched for far longer than the other. As you step closer, you notice a small safe tucked beneath the well-worn side of the bed, its metal surface faintly scuffed but solid. The air carries a lingering trace of old cologne and something more difficult to place... an echo of someone who stayed here long after the rest of the house fell silent.",
+        "returnDesc": "The bedroom feels much the same as before... quiet, spacious, and marked by the uneven use of the bed, the balcony door and private bathroom still exactly where you remember them.",
         "choices": {
             "1": {
                 "Leave the master bedroom": "mezzanine",
@@ -450,13 +450,13 @@
                 "item": false
             },
             "3": {
-                "Investigate the closet": "master_closet",
+                "Investigate the bathroom": "master_bathroom",
                 "once": false,
                 "nav" : true,
                 "item": false
             },
             "4": {
-                "Open the safe": "nah fam that shit locked lmfao",
+                "Approach the safe": "nah fam that shit locked lmfao",
                 "once": false,
                 "nav" : false,
                 "item": false
@@ -465,8 +465,8 @@
     },
     "master_bathroom": {
         "room_code": "MBA",
-        "description": "you walk into the master bedroom's private bathroom",
-        "returnDesc": "you are back in the master bathroom",
+        "description": "Stepping into the master bathroom, you're immediately struck by the stark contrast along the dual-sink countertop. One side is crowded with forgotten makeup items---powder compacts, lipstick tubes, brushes---all coated in a thick layer of dust that suggests they haven't been touched in decades. The other sink is much simpler, holding only a lone toothbrush and an old tube of toothpaste, as though someone here lived with the barest necessities. The mirror above them is clouded and speckled, reflecting the quiet divide between these two long-abandoned routines.",
+        "returnDesc": "The master bathroom feels unchanged, its quiet contrast between the two sinks still lingering beneath the dim, clouded mirror.",
         "choices": {
             "1": {
                 "Leave the bathroom": "master_bedroom",
@@ -478,16 +478,10 @@
     },
     "balcony": {
         "room_code": "BAL",
-        "description": "you walk out onto the balcony",
-        "returnDesc": "you return to the balcony",
+        "description": "Stepping out onto the narrow balcony, you're greeted by the cool rush of night air and the steady patter of rain against the iron railing. Below, the grounds stretch out in dark, rippling shapes... the overgrown gardens, the distant tree line, and the faint glimmer of the long drive winding back toward the world you left behind. Beyond it all, the surrounding mountains rise like great shadowed sentinels, their peaks fading into the clouds as the storm drapes them in mist. The moon hangs low behind shifting veils of gray, its pale light slipping through just enough to silver the rain, turning each droplet into a brief, shimmering bead before it vanishes into the darkness. The sound of the rainfall, the vast sweep of the land, and the looming silhouettes of the mountains lend the night an uncanny beauty... calm, immense, and quietly watchful.",
+        "returnDesc": "The balcony feels much the same... a cool sweep of night air, rain tapping against the iron railing, and the dark silhouettes of the mountains watching from afar.",
         "choices": {
             "1": {
-                "Look longingly out into the distance": "you look out towards the moon and take a deep breath before remembering you got shit to do",
-                "once": true,
-                "nav" : false,
-                "item": false
-            },
-            "2": {
                 "Go back inside": "master_bedroom",
                 "once": false,
                 "nav" : true,
