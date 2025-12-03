@@ -371,11 +371,11 @@
     },
     "kids_room": {
         "room_code": "KID",
-        "description": "Stepping through the door, you're met with a gentle hush, as though the air itself has been holding its breath for years. Faded floral wallpaper curls at the edges, and a small wooden desk sits beneath the window, still scattered with remnants of another life... an old journal with brittle pages, a dried fountain pen, and a cracked ceramic trinket that might once have held sentimental value. Along one wall, a narrow bookshelf leans under the weight of well-worn novels and a row of framed photographs. It takes only a moment for recognition to settle in... this room once belonged to your mother. The space feels paused in time, as though she left in a hurry and never dared to come back, yet her presence lingers in every corner.",
+        "description": "Stepping through the door into a bedroom, you're met with a gentle hush, as though the room has been frozen in the moment it was last occupied. Faded floral wallpaper curls softly at the edges, and a small wooden desk sits beneath the window, still scattered with remnants of a life once lived here... an old journal with brittle pages, a dried fountain pen, and a cracked ceramic trinket that looks like it once held sentimental value. Beside the neatly made bed, a small table holds an unframed photograph, its edges worn from years of handling. Along one wall, a narrow bookshelf leans under the weight of well-loved novels and framed pictures capturing a younger woman in various candid moments: laughing with friends, posing in the manor's garden, and standing beside an older man whose expression is both proud and distant. The whole room feels paused mid-step, as though whoever lived here left quickly and never looked back.",
         "returnDesc": "The room is just as you left it... quiet, still, and filled with the lingering traces of the life your mother once lived here.",
         "choices": {
             "1": {
-                "Open the closet doors": "kids_closet",
+                "Open the closet door": "kids_closet",
                 "once": false,
                 "nav" : true,
                 "item": false
@@ -385,12 +385,18 @@
                 "once": false,
                 "nav" : true,
                 "item": false
+            },
+            "3": {
+                "Pick up the photo": "KID-T-XXX-01",
+                "once": true,
+                "nav" : false,
+                "item": true
             }
         }
     },
     "kids_closet": {
         "room_code": "KDC",
-        "description": "You open the doors to the closet",
+        "description": "You pull open the closet door, and it resists at first... something inside shifting with a soft scrape before giving way. The space beyond is cramped and cluttered, piles of old belongings heaped in the center as though everything was hastily shoved inside in a single desperate moment. Boxes, folded blankets, brittle papers, and forgotten trinkets form an unstable mound that nearly reaches your waist. At the very top of it all sits a Victorian porcelain doll, its cracked face turned directly toward the door as if patiently waiting for someone to finally open it. The dim candlelight glints off its glassy eyes, making the stillness feel suddenly, unmistakably aware.",
         "returnDesc": "You open the doors to the closet again",
         "choices": {
             "1": {
@@ -398,6 +404,12 @@
                 "once": false,
                 "nav" : true,
                 "item": false
+            },
+            "2": {
+                "Take the doll": "KDC-T-XXX-01",
+                "once": true,
+                "nav" : false,
+                "item": true
             }
         }
     },

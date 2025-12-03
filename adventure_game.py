@@ -183,6 +183,8 @@ def load_removed_choices(save_data_removed: dict):
         for choice_key in choice_list:
             if choice_key in roomContents[room_key]['choices']:
                 del roomContents[room_key]['choices'][choice_key]
+            else:
+                pass
     removed_choices = save_data_removed.copy()
 
 # When nav = true, changes current_room based on user_input
@@ -527,6 +529,10 @@ def check_ifEvent():
         if check_hasItem("PLB-T-LBD-02"):
             event_digHoleReturn()
             return
+    elif "KDC-T-XXX-01" in inv_items:
+        if not check_hasItem("KDC-T-BTH-02"):
+            event_findRing()
+            return
     else:
         return
 #^^^^^^^^^^^^^^^^^^^^^^
@@ -761,11 +767,11 @@ def event_digHole():
     global roomContents, current_room
     choices = roomContents[current_room]['choices']
     choices["3"] = {
-            "Dig in the strange spot": "planter_box",
-            "once": False,
-            "nav": True,
-            "item": False
-        }
+        "Dig in the strange spot": "planter_box",
+        "once": False,
+        "nav": True,
+        "item": False
+    }
     return
     
 # Gets the player out of planter_box room and removes the pristine trowel item and the dig option
@@ -775,6 +781,18 @@ def event_digHoleReturn():
     inv_items.remove("UTC-T-PTB-01")
     choices = roomContents[current_room]['choices']
     del choices['3']
+    return
+
+# Adds the pick up ring option if the player has picked up the doll
+def event_findRing():
+    global roomContents
+    choices = roomContents['kids_closet']['choices']
+    choices["3"] = {
+        "Pick up the ring": "KDC-T-BTH-02",
+        "once": True,
+        "nav": False,
+        "item": True
+    }
     return
 #^^^^^^^^^^^^^^^^^^^^^^
 

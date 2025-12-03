@@ -117,5 +117,26 @@
         "description": "A simple wooden broom, could be useful for reaching something high-up.",
         "addDescription": "You picked up the wooden broom.",
         "useDescription": "You poke the attic door with the broom and the ladder falls in front of your feet."
+    },
+    "KID-T-XXX-01": {
+        "item_name": "Photo",
+        "essential": false,
+        "description": "You examine the photograph, its edges softened and slightly curled with age. Three people stand beneath the bright summer sun... an older man with a calm, steady smile, a woman beside him whose warm expression softens her entire face, and a younger woman in front who looks unmistakably like your mother in her teenage years. The three of them stand close together, relaxed and genuinely happy. Turning the photo over, you find a handwritten note on the back: 'Vivian's 17th birthday - July 21, 1994.'",
+        "addDescription": "You picked up the photo.",
+        "useDescription": "You cannot use this item."
+    },
+    "KDC-T-XXX-01": {
+        "item_name": "Old Doll",
+        "essential": false,
+        "description": "A delicate porcelain doll with finely painted features and an old-fashioned dress; despite its age, its glassy eyes seem to follow you.",
+        "addDescription": "You picked up the doll and noticed a small silver ring where the doll was sat.",
+        "useDescription": "You cannot use this item, you freak."
+    },
+    "KDC-T-BTH-02": {
+        "item_name": "Silver Ring",
+        "essential": false,
+        "description": "A polished silver ring with an engraving along the inner band that reads, 'Never gonna give you up, never gonna let you down.'",
+        "addDescription": "You picked up the ring.",
+        "useDescription": "You place the ring on the ring stand."
     }
 }
