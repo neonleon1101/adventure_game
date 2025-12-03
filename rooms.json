@@ -587,43 +587,157 @@
     },
     "puzzle_library": {
         "room_code": "LIP",
-        "description": "",
-        "returnDesc" : "",
+        "description": "You step out of the study and back into the library, the tall ceiling and rows of pilasters rising around you like a silent cathedral. As you lift your gaze, a figure hovers in the open air above... Eleanor. Her form drifts weightlessly, her features soft and distant, yet her eyes meet yours with a sharp, unmistakable awareness. She doesn't speak. Instead, her expression tightens with a kind of mournful urgency before her outline thins, dissolving into the air like mist caught in a draft.\n\nThe silence that follows lasts only a heartbeat.\n\nA violent crash erupts from beyond the doorway. The chandelier in the foyer plummets from the ceiling, hitting the floor with explosive force as flames burst outward in a sweeping ring. Fire races across the foyer in an instant, swallowing the walls in a roar of heat and smoke. Before you can react, the library door slams shut, the lock clacking shut with sharp finality.\n\nEleanor's voice glides through the library... not spoken aloud, but pressed into the air around you, old and aching with purpose:\n\n'Let the tale be told as it was lived...'\n\nAt her words, the candles mounted beneath each portrait flare into sudden blue flame, the unnatural fire licking upward. The canvases ignite without heat, burning away in eerie silence until new images emerge beneath the ash... different scenes, different faces, as though the paintings themselves have shed false histories to reveal what truly happened.\n\nThe room settles into a charged, waiting stillness. The story, it seems, is now yours to uncover.",
+        "returnDesc" : "You step back toward the center of the library, leaving the pilaster behind. From here, the room's vast height and the silent, altered portraits seem to draw in around you again, the space settling into a watchful stillness as though waiting for your next move.",
         "choices": {
             "1": {
-                "Investigate pilaster number 1" : "pilaster_one",
+                "Investigate pilaster number 1" : "pilaster_1",
                 "once": false,
                 "nav" : true,
                 "item": false
             },
             "2": {
-                "Investigate pilaster number 2" : "pilaster_two",
+                "Investigate pilaster number 2" : "pilaster_2",
                 "once": false,
                 "nav" : true,
                 "item": false
             },
             "3": {
-                "Investigate pilaster number 3" : "pilaster_three",
+                "Investigate pilaster number 3" : "pilaster_3",
                 "once": false,
                 "nav" : true,
                 "item": false
             },
             "4": {
-                "Investigate pilaster number 4" : "pilaster_four",
+                "Investigate pilaster number 4" : "pilaster_4",
                 "once": false,
                 "nav" : true,
                 "item": false
             },
             "5": {
-                "Investigate pilaster number 5" : "pilaster_five",
+                "Investigate pilaster number 5" : "pilaster_5",
                 "once": false,
                 "nav" : true,
                 "item": false
             },
             "6": {
-                "Investigate pilaster number 6" : "pilaster_six",
+                "Investigate pilaster number 6" : "pilaster_6",
                 "once": false,
                 "nav" : true,
+                "item": false
+            }
+        }
+    },
+    "pilaster_1": {
+        "room_code": "PL1",
+        "description": "The portrait depicts an imposing Scarlet patriarch standing behind a broad, mahogany desk. His posture is rigid, almost statuesque, with his hands clasped lightly in front of him as though caught mid-thought... or mid-sentence he chose not to speak. His expression is unreadable: neither stern nor kind, simply closed, sealed off like a vault.\n\nBehind him, a heavy crimson curtain hangs in thick folds, drawn partially across a tall window. Enough light slips around the fabric to suggest a world beyond, but the curtain refuses to reveal it fully. The shrouded window casts a long shadow over the patriarch's shoulder, darkening half his figure as if hiding something best left unspoken.\n\nOn the desk beside him rests a small brass scale, delicately crafted but noticeably off-balance, one dish hanging lower than the other. It is the only object in the scene tilted, imperfect, intruding upon the otherwise meticulous composition.\n\nEverything about the painting feels intentional. Controlled.\n\nA portrait of a man who knew exactly what not to say.",
+        "returnDesc" : "The portrait depicts an imposing Scarlet patriarch standing behind a broad, mahogany desk. His posture is rigid, almost statuesque, with his hands clasped lightly in front of him as though caught mid-thought... or mid-sentence he chose not to speak. His expression is unreadable: neither stern nor kind, simply closed, sealed off like a vault.\n\nBehind him, a heavy crimson curtain hangs in thick folds, drawn partially across a tall window. Enough light slips around the fabric to suggest a world beyond, but the curtain refuses to reveal it fully. The shrouded window casts a long shadow over the patriarch's shoulder, darkening half his figure as if hiding something best left unspoken.\n\nOn the desk beside him rests a small brass scale, delicately crafted but noticeably off-balance, one dish hanging lower than the other. It is the only object in the scene tilted, imperfect, intruding upon the otherwise meticulous composition.\n\nEverything about the painting feels intentional. Controlled.\n\nA portrait of a man who knew exactly what not to say.",
+        "choices": {
+            "1": {
+                "Return" : "puzzle_library",
+                "once": false,
+                "nav" : true,
+                "item": false
+            },
+            "2": {
+                "Exstinguish the candle's flame" : "You extinguish the candle's flame on pilaster 1.",
+                "once": true,
+                "nav" : false,
+                "item": false
+            }
+        }
+    },
+    "pilaster_2": {
+        "room_code": "PL2",
+        "description": "The portrait captures a Scarlet woman standing beside a tall, mullioned window, her figure wrapped in soft afternoon light. She rests one hand gently against the glass, fingers splayed as though reaching toward something beyond the pane... or bracing herself from it. Outside, the distant hillside and tree line appear calm enough to be a painting within a painting, serene and untouched.\n\nHer face, though composed, carries a quiet tension. Her eyes are fixed on a point far beyond the viewer's sight, wide enough to suggest worry she does not speak aloud. There is a subtle furrow in her brow, the kind that forms only after many days of unrest.\n\nThe reflection in the glass is the most unsettling detail: it is ever so slightly misaligned with her true position, as if the painted reflection were delayed, or looking somewhere else entirely. It gives the impression that the woman sees a truth even her mirrored self cannot bear.\n\nBehind her, the rest of the parlor is warm and orderly... lace curtains, a tidy writing desk, an oil lamp resting unused. Everything in the room is calm, but she is not.\n\nA figure who sensed disaster long before anyone else dared admit it.",
+        "returnDesc" : "The portrait captures a Scarlet woman standing beside a tall, mullioned window, her figure wrapped in soft afternoon light. She rests one hand gently against the glass, fingers splayed as though reaching toward something beyond the pane... or bracing herself from it. Outside, the distant hillside and tree line appear calm enough to be a painting within a painting, serene and untouched.\n\nHer face, though composed, carries a quiet tension. Her eyes are fixed on a point far beyond the viewer's sight, wide enough to suggest worry she does not speak aloud. There is a subtle furrow in her brow, the kind that forms only after many days of unrest.\n\nThe reflection in the glass is the most unsettling detail: it is ever so slightly misaligned with her true position, as if the painted reflection were delayed, or looking somewhere else entirely. It gives the impression that the woman sees a truth even her mirrored self cannot bear.\n\nBehind her, the rest of the parlor is warm and orderly... lace curtains, a tidy writing desk, an oil lamp resting unused. Everything in the room is calm, but she is not.\n\nA figure who sensed disaster long before anyone else dared admit it.",
+        "choices": {
+            "1": {
+                "Return" : "puzzle_library",
+                "once": false,
+                "nav" : true,
+                "item": false
+            },
+            "2": {
+                "Exstinguish the candle's flame" : "You extinguish the candle's flame on pilaster 2.",
+                "once": true,
+                "nav" : false,
+                "item": false
+            }
+        }
+    },
+    "pilaster_3": {
+        "room_code": "PL3",
+        "description": "The portrait depicts a Scarlet woman seated at a modest writing desk, her posture slightly hunched, as though the weight of her thoughts has drawn her inward. A sheet of cream-colored stationery lies before her, the first few lines written in a graceful hand before trailing off into nothing. Her pen hovers above the page, poised but unmoving, caught in the silent hesitation of words too painful to commit to ink.\n\nThe candle beside her burns low, its flame flickering toward exhaustion. Melted wax spills unevenly down its base, pooling in soft white folds that resemble fallen tears. Shadows gather around the edges of the room, leaving her face illuminated yet lonely... revealing the quiet anguish in her eyes, the tight pull of her lips trying not to tremble.\n\nAt the far corner of the desk sits a small framed photograph of a teenage girl. The frame is turned slightly away from the woman, as if she had rotated it mid-thought, uncertain whether to face it or hide it. The girl's expression is bright, hopeful... the kind of smile that suggests she has already chosen her path, even if it means stepping away from everything she once called home.\n\nThe painting holds its breath, preserving the moment just before a mother puts pen to paper… and decides what truths she can bear to send, and which she must carry alone.",
+        "returnDesc" : "The portrait depicts a Scarlet woman seated at a modest writing desk, her posture slightly hunched, as though the weight of her thoughts has drawn her inward. A sheet of cream-colored stationery lies before her, the first few lines written in a graceful hand before trailing off into nothing. Her pen hovers above the page, poised but unmoving, caught in the silent hesitation of words too painful to commit to ink.\n\nThe candle beside her burns low, its flame flickering toward exhaustion. Melted wax spills unevenly down its base, pooling in soft white folds that resemble fallen tears. Shadows gather around the edges of the room, leaving her face illuminated yet lonely... revealing the quiet anguish in her eyes, the tight pull of her lips trying not to tremble.\n\nAt the far corner of the desk sits a small framed photograph of a teenage girl. The frame is turned slightly away from the woman, as if she had rotated it mid-thought, uncertain whether to face it or hide it. The girl's expression is bright, hopeful... the kind of smile that suggests she has already chosen her path, even if it means stepping away from everything she once called home.\n\nThe painting holds its breath, preserving the moment just before a mother puts pen to paper… and decides what truths she can bear to send, and which she must carry alone.",
+        "choices": {
+            "1": {
+                "Return" : "puzzle_library",
+                "once": false,
+                "nav" : true,
+                "item": false
+            },
+            "2": {
+                "Exstinguish the candle's flame" : "You extinguish the candle's flame on pilaster 3.",
+                "once": true,
+                "nav" : false,
+                "item": false
+            }
+        }
+    },
+    "pilaster_4": {
+        "room_code": "PL4",
+        "description": "The portrait presents a distinguished Scarlet patriarch seated at a grand mahogany desk, the kind built to convey authority but currently doing little to steady the man behind it. He sits rigidly, shoulders tight, one hand gripping the carved armrest with such force that his knuckles blanch to a stark, unnatural white. His other hand rests atop a closed journal, fingers curled possessively as though afraid someone might take it from him... or read what lies inside.\n\nA single desk lamp casts a narrow cone of light across his face, illuminating deep lines etched into his brow and around his eyes. Those eyes, wide and rimmed with fatigue, do not meet the viewer's gaze but stare slightly past it, fixed on something beyond the frame. Something only he can see.\n\nBehind him, the rest of the study is swallowed in shadow, but a glass-fronted cabinet catches enough light to reflect the room. At first glance, the cabinet's reflection appears ordinary. But on closer inspection, a faint, blurred silhouette stands just behind the man's chair... indistinct yet unmistakably human, its shape leaning forward as if whispering into his ear.\n\nThe subject in the painting gives no indication he notices it.\n\nOr perhaps he notices it far too well.\n\nEvery detail in the work---the tense hands, the hollowed eyes, the ghostlike form in the reflection---paints the story of a man consumed not by illness or age, but by something he can never outrun inside his own home.",
+        "returnDesc" : "The portrait presents a distinguished Scarlet patriarch seated at a grand mahogany desk, the kind built to convey authority but currently doing little to steady the man behind it. He sits rigidly, shoulders tight, one hand gripping the carved armrest with such force that his knuckles blanch to a stark, unnatural white. His other hand rests atop a closed journal, fingers curled possessively as though afraid someone might take it from him... or read what lies inside.\n\nA single desk lamp casts a narrow cone of light across his face, illuminating deep lines etched into his brow and around his eyes. Those eyes, wide and rimmed with fatigue, do not meet the viewer's gaze but stare slightly past it, fixed on something beyond the frame. Something only he can see.\n\nBehind him, the rest of the study is swallowed in shadow, but a glass-fronted cabinet catches enough light to reflect the room. At first glance, the cabinet's reflection appears ordinary. But on closer inspection, a faint, blurred silhouette stands just behind the man's chair... indistinct yet unmistakably human, its shape leaning forward as if whispering into his ear.\n\nThe subject in the painting gives no indication he notices it.\n\nOr perhaps he notices it far too well.\n\nEvery detail in the work---the tense hands, the hollowed eyes, the ghostlike form in the reflection---paints the story of a man consumed not by illness or age, but by something he can never outrun inside his own home.",
+        "choices": {
+            "1": {
+                "Return" : "puzzle_library",
+                "once": false,
+                "nav" : true,
+                "item": false
+            },
+            "2": {
+                "Exstinguish the candle's flame" : "You extinguish the candle's flame on pilaster 4.",
+                "once": true,
+                "nav" : false,
+                "item": false
+            }
+        }
+    },
+    "pilaster_5": {
+        "room_code": "PL5",
+        "description": "The portrait captures a Scarlet patriarch standing upon a narrow iron balcony that overlooks a sprawling mining yard below. He is painted in immaculate detail: sharp suit, polished boots, a gloved hand resting on the railing as though he were surveying a kingdom rather than a workplace. His face holds a look of measured calculation... neither cruel nor kind, simply distant, as if his concerns lie far above the people laboring beneath him.\n\nBelow the balcony, the mine yard stretches outward in muted tones. Dozens of workers move across the scene, but they are rendered with noticeably less clarity than the central figure. Their faces blur into indistinct shapes, their features swallowed by dust and shadow. The machinery around them looms heavy and rust-colored, dominating the landscape and dwarfing the men who operate it.\n\nThe contrast is striking:\n\nThe overseer, crisp and defined, occupies nearly a third of the canvas, while the laborers form a hazy backdrop... more texture than individuals.\n\nA plume of smoke rises from one of the distant shafts, curling upward into the sky. Not enough to alarm, just enough to hint at strain beneath the surface.\n\nNothing in the painting is overtly sinister, yet something about the distance between the overseer and his workers feels unsettling. A man watching not people, but productivity. Not lives, but numbers.\n\nA portrait of authority turned cold.",
+        "returnDesc" : "The portrait captures a Scarlet patriarch standing upon a narrow iron balcony that overlooks a sprawling mining yard below. He is painted in immaculate detail: sharp suit, polished boots, a gloved hand resting on the railing as though he were surveying a kingdom rather than a workplace. His face holds a look of measured calculation... neither cruel nor kind, simply distant, as if his concerns lie far above the people laboring beneath him.\n\nBelow the balcony, the mine yard stretches outward in muted tones. Dozens of workers move across the scene, but they are rendered with noticeably less clarity than the central figure. Their faces blur into indistinct shapes, their features swallowed by dust and shadow. The machinery around them looms heavy and rust-colored, dominating the landscape and dwarfing the men who operate it.\n\nThe contrast is striking:\n\nThe overseer, crisp and defined, occupies nearly a third of the canvas, while the laborers form a hazy backdrop... more texture than individuals.\n\nA plume of smoke rises from one of the distant shafts, curling upward into the sky. Not enough to alarm, just enough to hint at strain beneath the surface.\n\nNothing in the painting is overtly sinister, yet something about the distance between the overseer and his workers feels unsettling. A man watching not people, but productivity. Not lives, but numbers.\n\nA portrait of authority turned cold.",
+        "choices": {
+            "1": {
+                "Return" : "puzzle_library",
+                "once": false,
+                "nav" : true,
+                "item": false
+            },
+            "2": {
+                "Exstinguish the candle's flame" : "You extinguish the candle's flame on pilaster 5.",
+                "once": true,
+                "nav" : false,
+                "item": false
+            }
+        }
+    },
+    "pilaster_6": {
+        "room_code": "PL6",
+        "description": "The painting depicts the Scarlet mine entrance in the aftermath of a devastating collapse, rendered in somber earth tones that seem unable to hold any trace of daylight. The once-sturdy support beams now jut out at crooked angles, snapped like brittle bones. Rubble spills from the mouth of the shaft in uneven heaps, forming a dark, choking mound that blocks the tunnel completely. A thin haze of dust still hangs in the air, softening the edges of everything it touches, as though the scene itself is struggling to settle.\n\nIn the foreground, a lone miner;s helmet lies on its side atop the dirt... its cracked surface catching a sliver of muted light. It is the only object in the painting depicted with crisp detail, as if the artist wanted to ensure the viewer could not look away from it. The emptiness of the helmet suggests a story the canvas refuses to state aloud.\n\nBehind it, a small group of figures stands gathered at a distance. They are rendered in faded silhouettes, blurred as though seen through a veil. Their posture speaks for them: heads bowed, shoulders slumped, bodies leaning into one another under a shared weight of grief. None of the figures face the viewer; all eyes are fixed on the collapsed tunnel, on the grave it became in an instant.\n\nThe hillside beyond is dim and colorless, its contours swallowed by the lingering dust cloud. Even the sky above has dulled, streaked with gray, as if nature itself mourns alongside the gathered families.\n\nIt is a quiet painting---still, heavy, and suffocating---capturing the moment when the Scarlet legacy shifted from prosperity to tragedy, long before the world knew just how much was being hidden beneath the rubble.",
+        "returnDesc" : "The painting depicts the Scarlet mine entrance in the aftermath of a devastating collapse, rendered in somber earth tones that seem unable to hold any trace of daylight. The once-sturdy support beams now jut out at crooked angles, snapped like brittle bones. Rubble spills from the mouth of the shaft in uneven heaps, forming a dark, choking mound that blocks the tunnel completely. A thin haze of dust still hangs in the air, softening the edges of everything it touches, as though the scene itself is struggling to settle.\n\nIn the foreground, a lone miner;s helmet lies on its side atop the dirt... its cracked surface catching a sliver of muted light. It is the only object in the painting depicted with crisp detail, as if the artist wanted to ensure the viewer could not look away from it. The emptiness of the helmet suggests a story the canvas refuses to state aloud.\n\nBehind it, a small group of figures stands gathered at a distance. They are rendered in faded silhouettes, blurred as though seen through a veil. Their posture speaks for them: heads bowed, shoulders slumped, bodies leaning into one another under a shared weight of grief. None of the figures face the viewer; all eyes are fixed on the collapsed tunnel, on the grave it became in an instant.\n\nThe hillside beyond is dim and colorless, its contours swallowed by the lingering dust cloud. Even the sky above has dulled, streaked with gray, as if nature itself mourns alongside the gathered families.\n\nIt is a quiet painting---still, heavy, and suffocating---capturing the moment when the Scarlet legacy shifted from prosperity to tragedy, long before the world knew just how much was being hidden beneath the rubble.",
+        "choices": {
+            "1": {
+                "Return" : "puzzle_library",
+                "once": false,
+                "nav" : true,
+                "item": false
+            },
+            "2": {
+                "Exstinguish the candle's flame" : "You extinguish the candle's flame on pilaster 6.",
+                "once": true,
+                "nav" : false,
                 "item": false
             }
         }

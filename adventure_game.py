@@ -25,6 +25,12 @@ rooms_explored = []
 removed_choices = {}
 playedSpookyMessage = False
 
+# Stats for the final puzzle
+correct_order = [5, 1, 4, 6, 2, 3]
+pilaster_sequence = []
+pilaster_puzzle_solved = False
+attempts_remaining = 3
+
 # Dictionary of crafting/combining recipes
 recipes = {
     tuple(sorted(["PAN-T-XXX-02", "FRD-T-XXX-02", "PAN-T-XXX-03"])): "XXX-T-RAT-01"
@@ -111,7 +117,10 @@ def saveGame():
         "inv_notes": inv_notes,
         "rooms_explored": rooms_explored,
         "removed_choices": removed_choices,
-        "playedSpookyMessage": playedSpookyMessage
+        "playedSpookyMessage": playedSpookyMessage,
+        "pilaster_sequence": pilaster_sequence,
+        "pilaster_puzzle_solved": pilaster_puzzle_solved,
+        "attempts_remaining": attempts_remaining
     }
     with open("./save_file.json", "w") as f:
         json.dump(save_data, f, indent=4)
@@ -127,7 +136,7 @@ def check_save_data() -> bool:
 
 # Loads relevant game data from a .txt file and continues the game from there
 def loadGame():
-    global playedSpookyMessage
+    global playedSpookyMessage, pilaster_sequence, pilaster_flags, pilaster_puzzle_solved, attempts_remaining
     with open("./save_file.json", "r") as f:
         save_data = json.load(f)
     
@@ -138,6 +147,9 @@ def loadGame():
         load_rooms_explored(save_data["rooms_explored"])
         load_removed_choices(save_data["removed_choices"])
         playedSpookyMessage = save_data["playedSpookyMessage"]
+        pilaster_sequence = save_data["pilaster_sequence"]
+        pilaster_puzzle_solved = save_data["pilaster_puzzle_solved"]
+        attempts_remaining = save_data["attempts_remaining"]
     if check_save_data() == False:
         msg = "No save data found"
         slowReader(msg, False)
@@ -529,7 +541,7 @@ def check_invFull(room_key: str, user_input: str) -> bool:
 
 # Checks if the player meets the conditions for an event loop, then sends them there if so
 def check_ifEvent():
-    global current_room
+    global current_room, pilaster_sequence
     
     # Giving the rat a sandwich
     if current_room == "rat_hole":
@@ -571,16 +583,31 @@ def check_ifEvent():
     if check_removed("mezzanine", "7"):
         event_addAtticLadder()
 
+    # Opening the safe in the master bedroom
     if current_room == "open_safe":
         event_openSafe()
 
+    # Playing a spooky message when the final key is picked up
     if not playedSpookyMessage:
         if "PAR-T-LBD-01" in inv_items and "PLB-T-LBD-02" in inv_items and "SFE-T-LBD-01" in inv_items:
             event_spookyMessage()
             event_addUnlockLibrary()
 
+    # Unlocking the library door
     if check_removed("library_door", '2'):
         event_addOpenDoor()
+
+    if current_room.startswith("pilaster_"):
+        pilasterSplit = current_room.split('_', 1)
+        pilasterNum = int(pilasterSplit[1])
+        if not pilasterNum in pilaster_sequence:
+            if check_removed(current_room, '2'):
+                event_extinguishPilaster(pilasterNum)
+
+    if pilaster_puzzle_solved == False:
+        if len(pilaster_sequence) == 6:
+            event_checkPilasterProgress()
+            current_room = "puzzle_library"
 
     return
 #^^^^^^^^^^^^^^^^^^^^^^
@@ -999,7 +1026,57 @@ def event_addOpenDoor():
         "item": False
     }
 
+# Extinguishes the current candle flame and adds the corresponding pilaster number to a list
+def event_extinguishPilaster(num):
+    global pilaster_sequence
+    pilaster_sequence.append(num)
 
+def event_checkPilasterProgress():
+    global pilaster_sequence, correct_order, attempts_remaining
+
+    if pilaster_sequence != correct_order:
+        attempts_remaining -= 1
+        if attempts_remaining == 2:
+            os.system('cls')
+            msg = "Only a moment after you extinguish the final flame, the candles beneath the pilasters flare violently, their blue flames stretching upward in twisting, erratic motions. From beyond the library doorway, the fire in the foyer roars louder, as though drawn suddenly deeper into a hungry breath. A wave of heat rolls through the room, prickling your skin, and the entire manor groans... a long, low, shuddering sound like wood and stone straining under invisible weight.\n\nEleanor's voice threads through the air, soft but trembling with urgency:\n\n'No... the story bends wrong this way. Two chances remain to set it right.'\n\nAs her words fade, the blue flames sputter out... only to spark back to life a moment later, steadier but unmistakably tense."
+            slowReader(msg, True)
+            time.sleep(2)
+            event_resetPilasters()
+            input("press 'enter' to continue")
+        elif attempts_remaining == 1:
+            os.system('cls')
+            msg = "As soon as you extinguish the last candle flame, the library reacts with violent immediacy. The blue fires along the pilasters erupt back to life in towering bursts, casting warped shadows that lash across the walls. From the foyer, the blaze roars with a thunderous force, loud enough to tremble through the floor beneath your feet. The heat surges again---hotter, dangerously close---and the manor releases a deep, shuddering groan, the kind that makes the beams overhead creak as though one more mistake might bring the ceiling crashing down... or let the fire spill into the library itself.\n\nEleanor's voice threads through the thickening air, strained and urgent:\n\n'The tale frays to its final strand... one chance remains to set it true.'\n\nThe flames sputter out again before reigniting, smaller but trembling violently, clinging to the bases of the pilasters like they're holding on by the thinnest margin."
+            slowReader(msg, True)
+            time.sleep(2)
+            event_resetPilasters()
+            input("press 'enter' to continue")
+        elif attempts_remaining == 0:
+            event_losePilasterPuzzle()
+
+def event_resetPilasters():
+    global pilaster_sequence, roomContents, removed_choices
+
+    for number in range(1, 7):
+        room_name = f'pilaster_{number}'
+        room = roomContents[room_name]
+        roomChoices = room['choices']
+        if room_name in removed_choices:
+            del removed_choices[room_name]
+        roomChoices['2'] = {
+            "Exstinguish the candle's flame" : f"You extinguish the candle's flame on pilaster {number}.",
+            "once": True,
+            "nav" : False,
+            "item": False
+        }
+    pilaster_sequence.clear()
+
+def event_losePilasterPuzzle():
+    os.system('cls')
+    msg = "That's not the right order... you have failed."
+    slowReader(msg, True)
+    time.sleep(2)
+    input("press 'enter' to continue")
+    quit()
 #^^^^^^^^^^^^^^^^^^^^^^
 
 
