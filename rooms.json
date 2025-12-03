@@ -369,10 +369,29 @@
             }
         }
     },
+    "ring_stand": {
+        "room_code": "RNG",
+        "description": "You slide the silver ring onto the bare finger of the porcelain ring stand, the metal settling neatly into place among the other tarnished bands. For a moment, nothing happens... then the stand gives a soft click, subtle but unmistakable. Its wide base shifts, and a hidden drawer springs open with a small metallic snap. Inside rests a folded note, tucked carefully into the narrow compartment. You lift the silver ring back off the stand before pocketing it once more.",
+        "returnDesc": "You once again slide the silver ring onto the bare finger of the ring stand, and just as before ",
+        "choices": {
+            "1": {
+                "Leave the bathroom": "mezzanine",
+                "once": false,
+                "nav" : true,
+                "item": false
+            },
+            "2": {
+                "Take the note": "BTH-N-004-01",
+                "once": true,
+                "nav" : false,
+                "item": true
+            }
+        }
+    },
     "kids_room": {
         "room_code": "KID",
         "description": "Stepping through the door into a bedroom, you're met with a gentle hush, as though the room has been frozen in the moment it was last occupied. Faded floral wallpaper curls softly at the edges, and a small wooden desk sits beneath the window, still scattered with remnants of a life once lived here... an old journal with brittle pages, a dried fountain pen, and a cracked ceramic trinket that looks like it once held sentimental value. Beside the neatly made bed, a small table holds an unframed photograph, its edges worn from years of handling. Along one wall, a narrow bookshelf leans under the weight of well-loved novels and framed pictures capturing a younger woman in various candid moments: laughing with friends, posing in the manor's garden, and standing beside an older man whose expression is both proud and distant. The whole room feels paused mid-step, as though whoever lived here left quickly and never looked back.",
-        "returnDesc": "The room is just as you left it... quiet, still, and filled with the lingering traces of the life your mother once lived here.",
+        "returnDesc": "The room is just as you left it... quiet, still, and filled with the lingering traces of life.",
         "choices": {
             "1": {
                 "Open the closet door": "kids_closet",

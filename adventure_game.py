@@ -530,25 +530,32 @@ def check_ifEvent():
     if current_room == "rat_hole":
         if check_hasItem("XXX-T-RAT-01"):
             event_lureRat()
-            return
-    elif current_room == "greenhouse":
+    
+    if current_room == "greenhouse":
         if check_hasItem("UTC-T-PTB-01"):
             event_digHole()
-            return
-    elif current_room == "planter_box":
+    
+    if current_room == "planter_box":
         if check_hasItem("PLB-T-LBD-02"):
             event_digHoleReturn()
-            return
-    elif check_removed('kids_closet', '2'): 
+    
+    if check_removed('kids_closet', '2'): 
         if not check_removed('kids_closet', '3'): 
             if not check_hasItem("KDC-T-BTH-02"):
                 event_findRing()
-                return
-        elif check_hasItem("KDC-T-BTH-02"):
-            event_ringStand()
-            return
-    else:
-        return
+    
+    if check_removed("kids_closet", "3"):
+        if check_hasItem("KDC-T-BTH-02"):
+            if not check_removed("bathroom", "2"):
+                event_addRingStand()
+        if not check_hasItem("KDC-T-BTH-02"):
+            event_removeRingStand()
+    
+    if check_removed("bathroom", "2"):
+        if not check_removed("bathroom", "3"):
+            event_addBathroomNote()
+    
+    return
 #^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -758,7 +765,7 @@ def show_useItemDesc(item_code: str) -> str:
 
 
 #----------------------
-#  EVENT LOOPS
+#  EVENT FUNCTIONS
 #----------------------
 # Luring the rat out of the hole with the sandwich
 def event_lureRat():
@@ -810,16 +817,33 @@ def event_findRing():
     return
 
 # Adds the option to interact with the ring stand if the player has picked up the silver ring
-def event_ringStand():
+def event_addRingStand():
     global roomContents
     choices = roomContents['bathroom']['choices']
     choices["2"] = {
-        "Place the ring on the ring stand": "KDC-T-BTH-02",
+        "Place the ring on the ring stand": "You slide the silver ring onto the bare finger of the porcelain ring stand, the metal settling neatly into place among the other tarnished bands. For a moment, nothing happens... then the stand gives a soft click, subtle but unmistakable. Its wide base shifts, and a hidden drawer springs open with a small metallic snap. Inside rests a folded note, tucked carefully into the narrow compartment. You lift the silver ring back off the stand before pocketing it once more.",
+        "once": True,
+        "nav": False,
+        "item": False
+    }
+    return
+
+# Removes the option to interact with the ring stand if the player removed the silver ring
+def event_removeRingStand():
+    global roomContents
+    choices = roomContents['bathroom']['choices']
+    del choices["2"]
+
+# Adds the fourth note to the bathroom after player places ring on ring stand
+def event_addBathroomNote():
+    global roomContents
+    choices = roomContents['bathroom']['choices']
+    choices["3"] = {
+        "Take the note from the ring stand": "BTH-N-004-01",
         "once": True,
         "nav": False,
         "item": True
     }
-    return
 #^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -837,7 +861,7 @@ while run:
             if check_save_data() == False:
                 pass
             elif check_save_data() == True:
-                slowReader("Starting a new game will erase any previous save data. Are you sure you want to start a new game?", False)
+                slowReader("Starting a new game will override any previous save data. Are you sure you want to start a new game?", False)
                 response = input('> ')
                 if response == 'yes':
                     pass

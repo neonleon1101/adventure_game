@@ -45,7 +45,7 @@
         "item_name": "Personal Letter",
         "essential": true,
         "description": "My dear Clara,\n\n\n\nI don't know whom to turn to anymore.\n\nThe men from the mine---those poor boys---haunt my sleep. Harold says I should stop 'meddling,' but how can I be silent when I know? When I've seen their faces? When I've heard what they make the children do?\n\nVivian left not long after the collapse. She said she couldn't bear to stay in this house another day... said the walls felt built on suffering, and she would not be part of whatever Harold was trying to hide. I wanted to go with her, but she insisted I stay, said someone needed to stand up to him. I fear she saw a darkness in him that even I refused to acknowledge.\n\nIf the truth comes out, the Scarlet name will be ruined forever. Maybe it should be.\n\nTonight I'm going to speak with him again. I'm frightened, but this has gone on too long. He must understand that this cannot continue. I pray he listens.\n\nIf he doesn't... I don't know what comes next.\n\n\n\n-Eleanor",
-        "addDescription": "You picked up note.",
+        "addDescription": "You take the note from the base of the ring stand.",
         "useDescription": "You cannot use this item."
     },
     "ATC-N-005-01": {
