@@ -1296,7 +1296,7 @@ while run:
             else:
                 print("I don't understand that command.")
                 time.sleep(1)
-        elif user_input in '1023456789':
+        elif user_input.isdigit() and user_input in '1023456789':
             if int(user_input) in range(1, len(inv_items)+1):
                 show_itemDesc(user_input)
             else:
@@ -1314,10 +1314,11 @@ while run:
         if user_input == '0':
             notesMenu = False
             inventoryMenu = True
-        elif user_input in '123456':
+        elif user_input.isdigit() and user_input in '123456':
             show_noteDesc(user_input)
         else:
             print("I don't understand that command.")
+            time.sleep(1)
 
     while play:
         os.system('cls')
