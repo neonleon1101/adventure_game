@@ -29,6 +29,7 @@ playedSpookyMessage = False
 correct_order = [5, 1, 4, 6, 2, 3]
 pilaster_sequence = []
 pilaster_puzzle_solved = False
+goto_mainMenu = False
 attempts_remaining = 3
 
 # Dictionary of crafting/combining recipes
@@ -133,6 +134,23 @@ def check_save_data() -> bool:
         return False
     else:
         return True
+
+# Wipes current save data from save_file
+def wipeSaveData():
+    global current_room, inv_items, inv_notes, rooms_explored, removed_choices, playedSpookyMessage, pilaster_sequence, pilaster_puzzle_solved, pilaster_puzzle_lost, attempts_remaining
+    
+    current_room = "exterior"
+    inv_items = []
+    inv_notes = [None, None, None, None, None, None]
+    rooms_explored = []
+    removed_choices = {}
+    playedSpookyMessage = False
+    pilaster_sequence = []
+    pilaster_puzzle_solved = False
+    pilaster_puzzle_lost = False
+    attempts_remaining = 3
+
+    open("./save_file.json", "w").close()
 
 # Loads relevant game data from a .txt file and continues the game from there
 def loadGame():
@@ -330,7 +348,7 @@ def show_notesMenu():
 
 # Shows Game Intro
 def show_prologue():
-    global current_room, gameChoices, commands
+    global current_room
     current_room = "exterior"
     
     os.system('cls')
@@ -340,6 +358,31 @@ def show_prologue():
     time.sleep(2)
     print("press 'enter' to continue")
     input('')
+    return
+
+# Shows Game Outro
+def show_epilogue():
+    global current_room
+    os.system('cls')
+    with open('./text/epilogue.txt', 'r', errors='ignore') as file:
+        content = file.read()
+    slowReader(content, True)
+    time.sleep(2)
+    print("press 'enter' to continue")
+    input('')
+    return
+
+# Shows Game Credits
+def show_credits():
+    global current_room
+    os.system('cls')
+    with open('./text/credits.txt', 'r', errors='ignore') as file:
+        content = file.read()
+    slowReader(content, True)
+    time.sleep(2)
+    print("press 'enter' to continue")
+    input('')
+    return
 
 # Show New Game loading
 def newGame():
@@ -541,7 +584,7 @@ def check_invFull(room_key: str, user_input: str) -> bool:
 
 # Checks if the player meets the conditions for an event loop, then sends them there if so
 def check_ifEvent():
-    global current_room, pilaster_sequence
+    global current_room, pilaster_sequence, play_resumed
     
     # Giving the rat a sandwich
     if current_room == "rat_hole":
@@ -608,6 +651,11 @@ def check_ifEvent():
         if len(pilaster_sequence) == 6:
             event_checkPilasterProgress()
             current_room = "puzzle_library"
+    elif pilaster_puzzle_solved == True:
+        current_room = "final_puzzle"
+
+    if pilaster_puzzle_solved == True:
+        event_finalPuzzle()
 
     return
 #^^^^^^^^^^^^^^^^^^^^^^
@@ -941,7 +989,7 @@ def event_openSafe():
         slowReader("What's the combination? (#-#-#-#)\n\nType 'stop' to quit", True)
         combination = input('> ').lower().strip()
 
-        if combination == '1-8-8-6':
+        if combination == '1-8-6-6':
             os.system('cls')
             msg = "With a final turn of the dial, the safe gives a soft mechanical click, followed by the slow, heavy swing of its door. Inside, the interior is dim but unmistakably occupied: a crumpled note lies pressed against the back wall, its edges yellowed and uneven, and beside it rests a brass key topped with a sharp, unmistakable spade-shaped head. The two items sit together as though they've been waiting... kept safe, hidden, and untouched for years until this moment."
             slowReader(msg, True)
@@ -1032,7 +1080,7 @@ def event_extinguishPilaster(num):
     pilaster_sequence.append(num)
 
 def event_checkPilasterProgress():
-    global pilaster_sequence, correct_order, attempts_remaining
+    global pilaster_sequence, correct_order, attempts_remaining, pilaster_puzzle_solved
 
     if pilaster_sequence != correct_order:
         attempts_remaining -= 1
@@ -1052,6 +1100,8 @@ def event_checkPilasterProgress():
             input("press 'enter' to continue")
         elif attempts_remaining == 0:
             event_losePilasterPuzzle()
+    elif pilaster_sequence == correct_order:
+        pilaster_puzzle_solved = True
 
 def event_resetPilasters():
     global pilaster_sequence, roomContents, removed_choices
@@ -1071,12 +1121,49 @@ def event_resetPilasters():
     pilaster_sequence.clear()
 
 def event_losePilasterPuzzle():
+    global goto_mainMenu
     os.system('cls')
-    msg = "That's not the right order... you have failed."
+    msg = "As you extinguish the final candle flame, the room holds its breath for a single, fragile moment. Then everything erupts at once. The blue fire along the pilasters surges upward in a single violent burst, merging into a sweeping arc of flame that screams across the ceiling. From the foyer, the roar of the inferno intensifies into a deafening, all-consuming howl, and heat slams into you like a physical force. The manor groans---no, wails---under the strain, its beams cracking in sharp, splintering snaps overhead.\n\nEleanor's voice cuts through the chaos, cold and hollow with finality:\n\n'You don't know the story.'\n\nThe flames leap into the library, racing up the walls and devouring the shelves in an instant. The ceiling buckles, fractures, and collapses in a thunder of falling beams and burning debris. Fire engulfs everything---books, portraits, pilasters, you---until there is no room, no house, no air left to breathe.\n\nEverything goes dark, and you die."
     slowReader(msg, True)
     time.sleep(2)
     input("press 'enter' to continue")
-    quit()
+    goto_mainMenu = True
+    return
+
+def event_finalPuzzle():
+    os.system('cls')
+    msg = "As you extinguish the last candle flame, the blue fire wavers... then settles into a calm, steady glow. One by one, the unnatural flames along the pilasters quietly snuff themselves out, leaving only the gentle light of the ordinary candles behind. The oppressive heat loosens its grip, and the roar of the inferno in the foyer fades until there is nothing... no crackling fire, no trembling beams, no groan of a house in pain. The ceiling above you stills. The air cools. For the first time since entering the library, everything feels... normal.\n\nExcept for the door behind you.\n\nThough silent now, it remains firmly shut, the lock unmoved.\n\nA soft shimmer forms high above, diffusing through the tall shadows of the library's vaulted ceiling. Slowly, gracefully, Eleanor descends... her shape coalescing into the pale outline of the woman you've seen only in glimpses. This time, she seems more focused, more present, her gaze anchored to yours with quiet intention. Around her neck hangs a delicate chain, and at its end rests a small heart-shaped key, faintly luminous as it sways over her chest.\n\nShe stops just above the floor, her expression neither kind nor cruel... only resolute, as though she has been waiting a very long time for this moment. When she speaks, her voice is clear, steady, and tinged with something ancient:\n\n'One final piece of the tale. Answer, and the heart of the manor will open.'\n\n'A house may stand on timber and stone,                                          A name may stand on fortune alone,                                               But what must a family stand upon                                                If it hopes to stand at all?'\n\nLegacy, Truth, or Loyalty\n\nThe library falls utterly silent, holding its breath for your reply."
+    slowReader(msg, True)
+    user_input = input('> ').lower().strip()
+    final_puzzle = True
+    while final_puzzle:
+        if user_input == 'legacy' or user_input == 'loyalty':
+            final_puzzle = False
+            event_loseGame()
+        elif user_input == 'truth':
+            final_puzzle = False
+            event_winGame()
+        else:
+            print("I don't understand that command")
+    
+    return
+
+def event_loseGame():
+    global goto_mainMenu
+    os.system('cls')
+    msg = "The moment the word leaves your lips, Eleanor's expression changes. Her eyes, once patient and searching, harden into something cold... deeply disappointed, almost mournful. The faint glow around her flickers, then dims, as though whatever hope lingered within her finally gutters out.\n\nShe drifts back a few inches, the heart-shaped key at her chest swaying once before falling still.\n\nWhen she speaks, her voice is no longer gentle. It is hollow, echoing with decades of weight:\n\n\n\n'You have learned nothing.'\n\n\n\nThe candles erupt. Blue flames roar back to life along the pilasters, but this time they surge with a violence the room has never felt before. The heat slams into you instantly, suffocating and absolute. Behind you, the foyer fire explodes into a monstrous blaze... its roar no longer distant, but crashing like a tidal wave of flame.\n\nThe library door bursts open, not to free you, but to unleash the inferno you once held at bay. Fire floods into the library in a blinding rush, devouring shelves, portraits, and air in the span of a breath. The ceiling groans, splits, and gives way in a cascade of burning timber.\n\nYou try to move, but the heat sears your lungs before you can take a step.\n\nThe flames swallow the room, then you.\n\nEverything goes dark, and you die."
+    slowReader(msg, True)
+    time.sleep(2)
+    input("press 'enter' to continue")
+    goto_mainMenu = True
+    return
+
+def event_winGame():
+    global goto_mainMenu
+    show_epilogue()
+    show_credits()
+    goto_mainMenu = True
+
 #^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -1146,11 +1233,7 @@ while run:
                 pass
             else:
                 break
-            current_room = "exterior"
-            inv_items = []
-            inv_notes = [None, None, None, None, None, None]
-            rooms_explored = []
-            removed_choices = {}
+            wipeSaveData()
             pauseMenu = False
             mainMenu = True
         elif user_input == '4':
@@ -1239,6 +1322,12 @@ while run:
     while play:
         os.system('cls')
         check_ifEvent()
+        if goto_mainMenu == True:
+            wipeSaveData()
+            play = False
+            mainMenu = True
+            goto_mainMenu == False
+            break
 
         roomExplored = check_explored(current_room)
         if roomExplored == False:
