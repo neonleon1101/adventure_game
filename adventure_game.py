@@ -130,10 +130,19 @@ def saveGame():
 # Checks if any save data exists
 def check_save_data() -> bool:
     filepath = "./save_file.json"
-    if os.path.getsize(filepath) == 0:
-        return False
-    else:
+
+    # If file already exists → success
+    if os.path.exists(filepath):
         return True
+
+    # File does not exist → try to create it
+    try:
+        with open(filepath, "w") as f:
+            f.write("")   # create empty file
+        return True
+    except Exception:
+        return False
+
 
 # Wipes current save data from save_file
 def wipeSaveData():
